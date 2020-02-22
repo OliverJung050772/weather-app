@@ -1,32 +1,56 @@
 input {
-  text-align: right;
-  padding-right: 3px;
+    box-shadow: 3px 3px 3px black;
+    border-radius: 3px;
+    text-align: right;
+    font-weight: bold;
+    padding-right: 3px;
+    width: 80%;
 }
 
 button {
-  box-shadow: 3px 3px 3px black;
+    box-shadow: 3px 3px 3px black;
+    border-radius: 3px;
+    background-color: darkblue;
+    color: white;
+    font-weight: bold;
+    width: 85px;
 }
 
 button:hover {
-  cursor: pointer;
-  background-color: deepskyblue;
+    cursor: pointer;
+    background-color: deepskyblue;
 }
 
 p {
     text-align: left;
+    font-weight: bold;
+    text-shadow: 3px 3px 3px black;
+    color: white;
+    padding-left: 10%;
+    margin: 0;
+}
+
+span {
+    text-align: left;
+    font-weight: bold;
+    text-shadow: 3px 3px 3px black;;
+    color: white;
     margin: 0;
 }
 
 /* Styling for the grid */
+/* ******************** */
 body {
     box-sizing: border-box;
 }
 
 div.container {
-    width: 85%;
+    /* additional styles */
+    width: 70%;
     margin-top: 20%;
     margin-left: auto;
     margin-right: auto;
+    font-family: sans-serif;
 }
 
 div.column {
