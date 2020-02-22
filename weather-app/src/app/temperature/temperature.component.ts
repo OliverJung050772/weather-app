@@ -11,19 +11,35 @@ export class TemperatureComponent implements OnInit {
   temperature: number;
   pressure: number;
 
+  readonly tempSpan = {
+      minTemp: -20,
+      maxTemp: 40
+  };
+
+  readonly pressSpan = {
+      minPress: 1080,
+      maxPress: 1150
+  };
+
   constructor() { }
 
+  getRandomValue(minVal: number, maxVal: number): number {
+      return Math.round((maxVal - minVal) * Math.random() + minVal);
+  }
+
   onMeasureTemperatureClick(): void {
-    this.temperature = Math.round(60 * Math.random() - 20);
+      this.temperature = this.getRandomValue(this.tempSpan.minTemp, this.tempSpan.maxTemp);
   }
 
   onMeasurePressureClick(): void {
-    this.pressure = Math.round(70 * Math.random() + 1080);
+      this.pressure = this.getRandomValue(this.pressSpan.minPress, this.pressSpan.maxPress);
   }
 
   ngOnInit(): void {
-    this.temperature = 0;
-    this.pressure = 0;
+      setInterval(() => this.onMeasureTemperatureClick(), 60000);
+      // Set initial values
+      this.onMeasurePressureClick();
+      this.onMeasureTemperatureClick();
   }
 
 }
