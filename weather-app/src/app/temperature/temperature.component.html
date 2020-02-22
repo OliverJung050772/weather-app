@@ -1,8 +1,15 @@
-<div>
-  <label>Temperature:</label>
-  <input type="text" value="{{temperature}}" disabled/>
-  <span>°C</span>
-  <button (click)="onMeasureClick()">measure</button>
+<div class="container">
+    <div class="row">
+        <div class="column col4"><p>Temperature:</p></div>
+        <div class="column col4"><input type="text" value="{{temperature}}" disabled/></div>
+        <div class="column col1"><p>°C</p></div>
+        <div class="column col3"><button (click)="onMeasureTemperatureClick()">measure</button></div>
+    </div>
+    <br class="clearfix"/>
+    <div class="row">
+        <div class="column col4"><p>Barometic pressure:</p></div>
+        <div class="column col4"><input type="text" value="{{pressure}}" disabled/></div>
+        <div class="column col1"><p>mBar</p></div>
+        <div class="column col3"><button (click)="onMeasurePressureClick()">measure</button></div>
+    </div>
 </div>
-
-

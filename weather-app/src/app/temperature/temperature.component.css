@@ -1,21 +1,94 @@
-div {
-  text-align: center;
-  margin-top: 20%;
-}
-
 input {
   text-align: right;
-  margin-left: 25px;
-  margin-right: 5px;
   padding-right: 3px;
 }
 
 button {
-  margin-left: 15px;
   box-shadow: 3px 3px 3px black;
 }
 
 button:hover {
   cursor: pointer;
   background-color: deepskyblue;
+}
+
+p {
+    text-align: left;
+    margin: 0;
+}
+
+/* Styling for the grid */
+body {
+    box-sizing: border-box;
+}
+
+div.container {
+    width: 85%;
+    margin-top: 20%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div.column {
+    float: left;
+}
+
+div.row {
+    width: 100%;
+    display: inline-flex;
+    margin-bottom: 20px;
+}
+
+.column.col1 {
+    width: 8.33%;
+}
+
+.column.col2 {
+    width: 16.66%;
+}
+
+.column.col3 {
+    width: 25.00%;
+}
+
+.column.col4 {
+    width: 33.33%;
+}
+
+.column.col5 {
+    width: 41.66%;
+}
+
+.column.col6 {
+    width: 50.00%;
+}
+
+.column.col7 {
+    width: 58.33%;
+}
+
+.column.col8 {
+    width: 66.66%;
+}
+
+.column.col9 {
+    width: 75.00%;
+}
+
+.column.col10 {
+    width: 83.33%;
+}
+
+.column.col11 {
+    width: 91.66%;
+}
+
+.column.col12 {
+    width:100.00%;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
 }
