@@ -1,0 +1,73 @@
+input {
+  box-shadow: 3px 3px 3px black;
+  border-radius: 3px;
+  text-align: right;
+  padding-right: 3px;
+  width: 80%;
+}
+
+button {
+  box-shadow: 3px 3px 3px black;
+  border-radius: 3px;
+  background-color: darkblue;
+  color: white;
+  width: 85px;
+  height: 24px;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: deepskyblue;
+}
+
+p {
+  text-align: left;
+  text-shadow: 3px 3px 3px black;
+  color: white;
+  padding-left: 10%;
+  margin: 0;
+}
+
+span {
+  text-align: left;
+  text-shadow: 3px 3px 3px black;;
+  color: white;
+  margin: 0;
+}
+
+/* Styling for the grid */
+/* ******************** */
+body {
+  box-sizing: border-box;
+}
+
+div.container {
+  /* additional styles */
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: sans-serif;
+  font-size: 18px;
+}
+
+div.column {
+  float: left;
+}
+
+div.row {
+  width: 100%;
+  display: inline-flex;
+  margin-bottom: 20px;
+}
+
+.column.col1 {
+  width: 8.33%;
+}
+
+.column.col2 {
+  width: 16.66%;
+}
+
+.column.col3 {
+  width: 25.00%;
+}
