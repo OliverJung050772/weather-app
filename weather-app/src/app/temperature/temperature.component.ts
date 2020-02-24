@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RandomService } from '../random.service';
 
 @Component({
   selector: 'app-temperature',
@@ -9,21 +10,24 @@ import { Component, OnInit } from '@angular/core';
 export class TemperatureComponent implements OnInit {
 
   temperature: number;
-  pressure: number;
 
-  constructor() { }
+  readonly temperatureSpan = {
+      minTemperature: -20,
+      maxTemperature: 40
+  };
 
-  onMeasureTemperatureClick(): void {
-    this.temperature = Math.round(60 * Math.random() - 20);
-  }
+  constructor(private randomService: RandomService) {}
 
-  onMeasurePressureClick(): void {
-    this.pressure = Math.round(70 * Math.random() + 1080);
+  measureTemperature(): void {
+      this.temperature = this.randomService.getRandomValue(this.temperatureSpan.minTemperature, this.temperatureSpan.maxTemperature);
   }
 
   ngOnInit(): void {
-    this.temperature = 0;
-    this.pressure = 0;
+      setInterval(() => this.measureTemperature(), 60000);
+      // Set initial Temperature
+      this.measureTemperature();
   }
 
 }
+
+

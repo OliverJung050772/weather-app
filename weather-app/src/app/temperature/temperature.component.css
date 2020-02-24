@@ -2,7 +2,6 @@ input {
     box-shadow: 3px 3px 3px black;
     border-radius: 3px;
     text-align: right;
-    font-weight: bold;
     padding-right: 3px;
     width: 80%;
 }
@@ -12,8 +11,8 @@ button {
     border-radius: 3px;
     background-color: darkblue;
     color: white;
-    font-weight: bold;
     width: 85px;
+    height: 24px;
 }
 
 button:hover {
@@ -23,7 +22,6 @@ button:hover {
 
 p {
     text-align: left;
-    font-weight: bold;
     text-shadow: 3px 3px 3px black;
     color: white;
     padding-left: 10%;
@@ -32,7 +30,6 @@ p {
 
 span {
     text-align: left;
-    font-weight: bold;
     text-shadow: 3px 3px 3px black;;
     color: white;
     margin: 0;
@@ -47,10 +44,11 @@ body {
 div.container {
     /* additional styles */
     width: 70%;
-    margin-top: 20%;
+    margin-top: 25%;
     margin-left: auto;
     margin-right: auto;
     font-family: sans-serif;
+    font-size: 18px;
 }
 
 div.column {
@@ -73,42 +71,6 @@ div.row {
 
 .column.col3 {
     width: 25.00%;
-}
-
-.column.col4 {
-    width: 33.33%;
-}
-
-.column.col5 {
-    width: 41.66%;
-}
-
-.column.col6 {
-    width: 50.00%;
-}
-
-.column.col7 {
-    width: 58.33%;
-}
-
-.column.col8 {
-    width: 66.66%;
-}
-
-.column.col9 {
-    width: 75.00%;
-}
-
-.column.col10 {
-    width: 83.33%;
-}
-
-.column.col11 {
-    width: 91.66%;
-}
-
-.column.col12 {
-    width:100.00%;
 }
 
 .clearfix::after {

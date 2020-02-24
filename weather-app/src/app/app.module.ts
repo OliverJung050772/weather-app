@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { TemperatureComponent } from './temperature/temperature.component';
+import { PressureComponent } from './pressure/pressure.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TemperatureComponent
+    TemperatureComponent,
+    PressureComponent
   ],
   imports: [
     BrowserModule
