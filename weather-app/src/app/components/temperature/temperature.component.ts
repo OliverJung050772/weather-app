@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-// @ts-ignore
 import {WeatherService} from '../../services/weather.service';
-import {Observable, of, Subject} from 'rxjs';
-import {tap} from "rxjs/operators";
+import {Subject} from 'rxjs';
 
 @Component({
   selector: 'app-temperature',
