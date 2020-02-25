@@ -6,7 +6,7 @@ import { PressureSpan } from '../models/pressure-span';
 @Injectable({
   providedIn: 'root'
 })
-// TODO use better name
+
 export class WeatherService {
 
   temperatureSpan: TemperatureSpan;

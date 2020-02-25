@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { WeatherService } from '../../services/weather.service';
+import {Component, OnInit} from '@angular/core';
+// @ts-ignore
+import {WeatherService} from '../../services/weather.service';
+import {Observable, of, Subject} from 'rxjs';
+import {tap} from "rxjs/operators";
 
 @Component({
   selector: 'app-temperature',
@@ -10,17 +13,30 @@ import { WeatherService } from '../../services/weather.service';
 export class TemperatureComponent implements OnInit {
 
   currentTemperature: number;
+  averageTemperature: number;
 
-  constructor(private weatherService: WeatherService) {}
+  measuredTemperatures: number[] = [];
+  private readonly subject = new Subject<number[]>();
+
+  constructor(private weatherService: WeatherService) {
+  }
 
   measureTemperature(): void {
-      this.currentTemperature = this.weatherService.getTemperature();
+    this.currentTemperature = this.weatherService.getTemperature();
+    this.measuredTemperatures.push(this.currentTemperature);
+    this.subject.next(this.measuredTemperatures);
   }
 
   ngOnInit(): void {
-      setInterval(() => this.measureTemperature(), 10000);
-      // Set initial Temperature
-      this.measureTemperature();
+    setInterval(() => this.measureTemperature(), 10000);
+    // Set initial Temperature
+    this.averageTemperature = 0;
+    this.measureTemperature();
+    this.subject.asObservable().subscribe((array) => {
+        const arraySum = array.reduce((a, b) => a + b, 0);
+        const arrayLength = array.length;
+        this.averageTemperature = arraySum / arrayLength;
+    });
   }
 
 }
