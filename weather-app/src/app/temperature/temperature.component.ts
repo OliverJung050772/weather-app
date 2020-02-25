@@ -23,7 +23,7 @@ export class TemperatureComponent implements OnInit {
   }
 
   ngOnInit(): void {
-      setInterval(() => this.measureTemperature(), 60000);
+      setInterval(() => this.measureTemperature(), 10000);
       // Set initial Temperature
       this.measureTemperature();
   }

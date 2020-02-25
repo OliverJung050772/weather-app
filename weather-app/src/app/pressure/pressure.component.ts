@@ -22,6 +22,7 @@ export class PressureComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    setInterval(() => this.measurePressure(), 5000);
     // set initial pressure-value
     this.measurePressure();
   }
