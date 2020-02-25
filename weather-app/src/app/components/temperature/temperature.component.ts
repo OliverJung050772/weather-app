@@ -33,7 +33,7 @@ export class TemperatureComponent implements OnInit {
     this.subject.asObservable().subscribe((array) => {
         const arraySum = array.reduce((a, b) => a + b, 0);
         const arrayLength = array.length;
-        this.averageTemperature = arraySum / arrayLength;
+        this.averageTemperature = Math.round(arraySum / arrayLength);
     });
   }
 

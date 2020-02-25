@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {TemperatureSpan} from '../models/temperature-span';
 import {PressureSpan} from '../models/pressure-span';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -13,7 +12,7 @@ export class WeatherService {
   pressureSpan: PressureSpan;
 
   constructor() {
-    this.temperatureSpan = new TemperatureSpan(20, 40);
+    this.temperatureSpan = new TemperatureSpan(-20, 40);
     this.pressureSpan = new PressureSpan(1080, 1150);
   }
 
@@ -25,10 +24,8 @@ export class WeatherService {
     return this.getRandomValueBetween(this.pressureSpan.minPressure, this.pressureSpan.maxPressure);
   }
 
-  // returns a random-value between minVal and maxVal
   private getRandomValueBetween(minVal: number, maxVal: number): number {
     return Math.round((maxVal - minVal) * Math.random() + minVal);
   }
-
 
 }
