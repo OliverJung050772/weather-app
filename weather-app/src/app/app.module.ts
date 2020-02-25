@@ -1,9 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppComponent } from './app.component';
-import { TemperatureComponent } from './temperature/temperature.component';
-import { PressureComponent } from './pressure/pressure.component';
+import { AppComponent } from './components/app.component';
+import { TemperatureComponent } from './components/temperature/temperature.component';
+import { PressureComponent } from './components/pressure/pressure.component';
 
 @NgModule({
   declarations: [

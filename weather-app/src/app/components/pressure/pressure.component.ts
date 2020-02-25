@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RandomService } from '../random.service';
+import { WeatherService } from '../../services/weather.service';
 
 @Component({
   selector: 'app-pressure',
@@ -8,17 +8,12 @@ import { RandomService } from '../random.service';
 })
 export class PressureComponent implements OnInit {
 
-  pressure: number;
+  currentPressure: number;
 
-  readonly pressureSpan = {
-    minPressure: 1080,
-    maxPressure: 1150
-  };
-
-  constructor(private randomService: RandomService) { }
+  constructor(private weatherService: WeatherService) { }
 
   measurePressure(): void {
-    this.pressure = this.randomService.getRandomValue(this.pressureSpan.minPressure, this.pressureSpan.maxPressure);
+    this.currentPressure = this.weatherService.getPressure();
   }
 
   ngOnInit(): void {

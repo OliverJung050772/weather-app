@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RandomService } from '../random.service';
+import { WeatherService } from '../../services/weather.service';
 
 @Component({
   selector: 'app-temperature',
@@ -9,17 +9,12 @@ import { RandomService } from '../random.service';
 
 export class TemperatureComponent implements OnInit {
 
-  temperature: number;
+  currentTemperature: number;
 
-  readonly temperatureSpan = {
-      minTemperature: -20,
-      maxTemperature: 40
-  };
-
-  constructor(private randomService: RandomService) {}
+  constructor(private weatherService: WeatherService) {}
 
   measureTemperature(): void {
-      this.temperature = this.randomService.getRandomValue(this.temperatureSpan.minTemperature, this.temperatureSpan.maxTemperature);
+      this.currentTemperature = this.weatherService.getTemperature();
   }
 
   ngOnInit(): void {
@@ -29,5 +24,3 @@ export class TemperatureComponent implements OnInit {
   }
 
 }
-
-

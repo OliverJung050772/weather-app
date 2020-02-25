@@ -1,0 +1,10 @@
+/* for clearing the float */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.container {
+  margin-top: 25%;
+}
