@@ -3,3 +3,13 @@
   clear: both;
   display: table;
 }
+
+.arrow {
+  font-size: 2.0rem;
+  font-weight: bolder;
+  padding-left: 10px;
+}
+
+#arrow-box {
+  margin-top: -10px;
+}
