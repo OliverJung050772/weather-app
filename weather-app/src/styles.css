@@ -82,3 +82,9 @@ div.row {
   width: 25.00%;
 }
 
+/* for clearing the float */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
