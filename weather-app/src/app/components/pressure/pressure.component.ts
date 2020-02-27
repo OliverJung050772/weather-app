@@ -14,7 +14,7 @@ export class PressureComponent implements OnInit {
   pressureTrendSymbol: string;
   pressureTrendText: string;
   measurements: Measurement[] = [];
-  startTime: number;
+
   private readonly measureInterval: number = 5000;
   private readonly trendInterval: number = 30000;
   private readonly pressureChangeSubject = new Subject<number>();
@@ -27,8 +27,28 @@ export class PressureComponent implements OnInit {
     this.pressureChangeSubject.next(this.weatherService.getPressure());
   }
 
+  private updatePressureTrending(valuesArray: Measurement[]): void {
+    const deltaPressure = this.differentBetweenLastPressureValues(valuesArray);
+    if (Math.abs(deltaPressure) >= 4) {
+      console.log(deltaPressure + ' at ' + valuesArray[valuesArray.length - 1].timeStamp);
+      const pitchPressure = this.calculatePressureChangeOfInterval(valuesArray);
+      console.log('Steigung: ' + pitchPressure);
+      if (Math.abs(pitchPressure) >= 10) {
+        if (pitchPressure > 0) {
+          this.setTrendValuesInView('↑', 'rising');
+        } else {
+          this.setTrendValuesInView('↓', 'falling');
+        }
+      } else {
+        this.setTrendValuesInView('→', 'stable');
+      }
+    } else {
+      this.setTrendValuesInView('→', 'stable');
+    }
+  }
+
   private differentBetweenLastPressureValues(valuesArray: Measurement[]): number {
-    if (valuesArray.length >= 2 ) {
+    if (valuesArray.length >= 2) {
       return valuesArray[valuesArray.length - 1].pressureValue - valuesArray[valuesArray.length - 2].pressureValue;
     } else {
       return 0;
@@ -37,26 +57,31 @@ export class PressureComponent implements OnInit {
 
   private calculatePressureChangeOfInterval(valuesArray: Measurement[]): number {
     if (valuesArray.length > 2) {
-      const inIntervalArray: Measurement[] = [];
+      const inIntervalArray: number[] = [];
       const timeSpan = valuesArray[valuesArray.length - 1].timeStamp - this.trendInterval;
-      valuesArray.forEach( item => {
+      valuesArray.forEach(item => {
         if (item.timeStamp >= timeSpan) {
-          inIntervalArray.push(item);
+          inIntervalArray.push(item.pressureValue);
         }
       });
-      const deltaPressure = inIntervalArray[inIntervalArray.length - 1].pressureValue - inIntervalArray[0].pressureValue;
-      const deltaTime = inIntervalArray[inIntervalArray.length - 1].timeStamp - inIntervalArray[0].timeStamp;
-      return  (deltaPressure / deltaTime) * 10000;
+      const deltaPressure = inIntervalArray[inIntervalArray.length - 1] - inIntervalArray[0];
+      const deltaTime = this.trendInterval / 10000;
+      return deltaPressure / deltaTime;
     } else {
       return 0;
     }
   }
 
+  private setTrendValuesInView(trendIcon: string, trendWord: string): void {
+    this.pressureTrendSymbol = trendIcon;
+    this.pressureTrendText = trendWord;
+  }
+
   ngOnInit(): void {
     // set initial pressure-value
     this.currentPressure = this.weatherService.getPressure();
-    this.startTime = new Date().getTime();
     this.measurements.push(new Measurement(new Date().getTime(), this.currentPressure));
+
     setInterval(() => this.measurePressure(), this.measureInterval);
 
     this.pressureChangeSubject.asObservable().subscribe(value => {
@@ -65,64 +90,8 @@ export class PressureComponent implements OnInit {
       this.pressureTrendSubject.next(this.measurements);
     });
 
-    this.pressureTrendSubject.asObservable().subscribe(valuesArray => {
-      const deltaPressure = this.differentBetweenLastPressureValues(valuesArray);
-      if (Math.abs(deltaPressure) >= 4) {
-        console.log(deltaPressure + ' at ' + valuesArray[valuesArray.length - 1].timeStamp);
-        const pitchPressure = this.calculatePressureChangeOfInterval(valuesArray);
-        console.log('Steigung: ' + pitchPressure);
-        if (Math.abs(pitchPressure) >= 10) {
-          if (pitchPressure > 0) {
-            this.pressureTrendText = 'rising';
-            this.pressureTrendSymbol = '↑';
-          } else {
-            this.pressureTrendText = 'falling';
-            this.pressureTrendSymbol = '↓';
-          }
-        }
-      } else {
-        this.pressureTrendText = 'stable';
-        this.pressureTrendSymbol = '→';
-      }
-    });
+    this.pressureTrendSubject.asObservable().subscribe(valuesArray =>
+      this.updatePressureTrending(valuesArray));
   }
 
 }
-
-/*
-if (new Date().getTime() > this.startTime + this.trendInterval && valuesArray.length > 6) {
-        // if the over all time is greater than the measure-interval
-        if (valuesArray[valuesArray.length - 1].timeStamp - this.trendInterval >= valuesArray[0].timeStamp) {
-          // get the last index included in the interval
-          let isInInterval = true;
-          let currentIndex = valuesArray.length - 1;
-          let lastIndex: number;
-          while (isInInterval === true) {
-            if (valuesArray[currentIndex - 1].timeStamp < valuesArray[currentIndex].timeStamp - this.trendInterval) {
-              lastIndex = currentIndex;
-              isInInterval = false;
-            }
-            currentIndex--;
-          }
-          // calculate the sum from last to current index
-          valuesArray.splice(0, lastIndex - 1);
-          let arraySum = 0;
-          valuesArray.forEach(item => arraySum = arraySum + item.pressureValue);
-          const valuesArrayAverage = arraySum / valuesArray.length;
-          const deltaPressure = valuesArray[currentIndex].pressureValue - valuesArray[currentIndex - 1].pressureValue;
-          if (Math.abs(valuesArrayAverage - valuesArray[lastIndex].pressureValue) >= 10 && Math.abs(deltaPressure) >= 4) {
-            if (deltaPressure > 0) {
-              this.pressureTrendText = 'rising';
-              this.pressureTrendSymbol = '↑';
-            } else {
-              this.pressureTrendText = 'falling';
-              this.pressureTrendSymbol = '↓';
-            }
-          } else {
-            this.pressureTrendText = 'stable';
-            this.pressureTrendSymbol = '→';
-          }
-        }
-      }
-
- */
