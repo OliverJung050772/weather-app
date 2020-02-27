@@ -5,6 +5,7 @@
     <div class="column col2"><input type="text" value="{{currentPressure}}" disabled/></div>
     <div class="column col1"><span>mBar</span></div>
     <div class="column col2"><button (click)="measurePressure()">measure</button></div>
+    <div class="column col2"><div class="button"><a [routerLink]="['/history', 'pressure']">history</a></div></div>
   </div>
   <br class="clearfix" />
   <div class="row">

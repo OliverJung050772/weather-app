@@ -6,8 +6,7 @@ import {HistoryComponent} from './components/history/history.component';
 
 const routes: Routes = [
   { path: 'main', component: MainviewComponent },
-  { path: 'history/temperature', component: HistoryComponent},
-  { path: 'history/pressure', component: HistoryComponent}
+  { path: 'history/:name', component: HistoryComponent},
 ];
 
 @NgModule({
