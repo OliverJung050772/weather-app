@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 html {
+    box-sizing: border-box;
     background: url(../img/weather-backgr.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -8,7 +9,7 @@ html {
     background-attachment: fixed;
 }
 
-h1 {
+h1, h3 {
   font-weight: lighter;
   color: white;
   text-shadow: 3px 3px 3px black;
@@ -23,7 +24,7 @@ input {
   width: 80%;
 }
 
-button {
+button, .button {
   box-shadow: 3px 3px 3px black;
   border-radius: 3px;
   background-color: darkblue;
@@ -32,9 +33,24 @@ button {
   height: 24px;
 }
 
-button:hover {
+.button {
+  text-decoration: none;
+  font: 400 13.3333px Arial;
+  text-align: center;
+  border: 2px outset buttonface;
+  height: 17px;
+  padding-top: 3px;
+}
+
+button:hover,
+.button:hover {
   cursor: pointer;
   background-color: deepskyblue;
+}
+
+a {
+  text-decoration: none;
+  color: white;
 }
 
 p {
