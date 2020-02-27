@@ -45,7 +45,7 @@ export class PressureComponent implements OnInit {
 
   private differentBetweenLastPressureValues(valuesArray: Measurement[]): number {
     if (valuesArray.length >= 2) {
-      return valuesArray[valuesArray.length - 1].pressureValue - valuesArray[valuesArray.length - 2].pressureValue;
+      return valuesArray[valuesArray.length - 1].measuredValue - valuesArray[valuesArray.length - 2].measuredValue;
     } else {
       return 0;
     }
@@ -57,7 +57,7 @@ export class PressureComponent implements OnInit {
       const timeSpan = valuesArray[valuesArray.length - 1].timeStamp - this.trendInterval;
       valuesArray.forEach(item => {
         if (item.timeStamp >= timeSpan) {
-          inIntervalArray.push(item.pressureValue);
+          inIntervalArray.push(item.measuredValue);
         }
       });
       const deltaPressure = inIntervalArray[inIntervalArray.length - 1] - inIntervalArray[0];
@@ -82,7 +82,9 @@ export class PressureComponent implements OnInit {
 
     this.pressureChangeSubject.asObservable().subscribe(value => {
       this.currentPressure = value;
-      this.measurements.push(new Measurement(new Date().getTime(), value));
+      const newMeasurement = new Measurement(new Date().getTime(), value);
+      this.measurements.push(newMeasurement);
+      this.weatherService.addToPressureHistoryList(newMeasurement);
       this.pressureTrendSubject.next(this.measurements);
     });
 
