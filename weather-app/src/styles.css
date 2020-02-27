@@ -8,6 +8,13 @@ html {
     background-attachment: fixed;
 }
 
+h1 {
+  font-weight: lighter;
+  color: white;
+  text-shadow: 3px 3px 3px black;
+  font-family: Consolas, Arial, sans-serif;
+}
+
 input {
   box-shadow: 3px 3px 3px black;
   border-radius: 3px;
