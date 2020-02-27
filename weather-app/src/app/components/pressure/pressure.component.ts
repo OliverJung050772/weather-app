@@ -29,18 +29,14 @@ export class PressureComponent implements OnInit {
 
   private updatePressureTrending(valuesArray: Measurement[]): void {
     const deltaPressure = this.differentBetweenLastPressureValues(valuesArray);
-    if (Math.abs(deltaPressure) >= 4) {
-      console.log(deltaPressure + ' at ' + valuesArray[valuesArray.length - 1].timeStamp);
-      const pitchPressure = this.calculatePressureChangeOfInterval(valuesArray);
-      console.log('Steigung: ' + pitchPressure);
-      if (Math.abs(pitchPressure) >= 10) {
-        if (pitchPressure > 0) {
-          this.setTrendValuesInView('↑', 'rising');
-        } else {
-          this.setTrendValuesInView('↓', 'falling');
-        }
+    const pitchPressure = this.calculatePressureChangeOfInterval(valuesArray);
+    console.log(deltaPressure + ' at ' + valuesArray[valuesArray.length - 1].timeStamp);
+    console.log('pressurePitch: ' + Number.parseFloat(pitchPressure.toString()).toPrecision(4));
+    if ((Math.abs(deltaPressure) >= 4) && (Math.abs(pitchPressure) >= 10)) {
+      if (pitchPressure > 0) {
+        this.setTrendValuesInView('↑', 'rising');
       } else {
-        this.setTrendValuesInView('→', 'stable');
+        this.setTrendValuesInView('↓', 'falling');
       }
     } else {
       this.setTrendValuesInView('→', 'stable');
