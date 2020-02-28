@@ -13,11 +13,13 @@ export class PressureComponent implements OnInit {
   currentPressure: number;
   pressureTrendSymbol: string;
   pressureTrendText: string;
+  // TODO dreifache Datenhaltung?
   measurements: Measurement[] = [];
 
   private readonly measureInterval: number = 5000;
   private readonly trendInterval: number = 30000;
   private readonly pressureChangeSubject = new Subject<number>();
+  // TODO doppelte Datenhaltung?
   private readonly pressureTrendSubject = new Subject<Measurement[]>();
 
   constructor(private weatherService: WeatherService) {
@@ -27,9 +29,11 @@ export class PressureComponent implements OnInit {
     this.pressureChangeSubject.next(this.weatherService.getPressure());
   }
 
+  // TODO Trending?
   private updatePressureTrending(valuesArray: Measurement[]): void {
     const deltaPressure = this.differentBetweenLastPressureValues(valuesArray);
     const pitchPressure = this.calculatePressureChangeOfInterval(valuesArray);
+    // TODO no console.logs
     console.log(deltaPressure + ' at ' + valuesArray[valuesArray.length - 1].timeStamp);
     console.log('pressurePitch: ' + Number.parseFloat(pitchPressure.toString()).toPrecision(4));
     if ((Math.abs(deltaPressure) >= 4) && (Math.abs(pitchPressure) >= 10)) {
@@ -73,6 +77,7 @@ export class PressureComponent implements OnInit {
     this.pressureTrendText = trendWord;
   }
 
+  // TODO public
   ngOnInit(): void {
     // set initial pressure-value
     this.currentPressure = this.weatherService.getPressure();

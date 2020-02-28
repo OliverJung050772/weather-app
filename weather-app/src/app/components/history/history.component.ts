@@ -11,8 +11,9 @@ import {WeatherService} from '../../services/weather.service';
 export class HistoryComponent implements OnInit {
 
   dataSourceName: string;
+  // TODO: Barometric Pressure History, Temperature History
   title: string;
-  measurementSorce: Measurement[] = [];
+  measurementSource: Measurement[] = [];
 
   constructor(private route: ActivatedRoute, private weatherService: WeatherService) { }
 
@@ -20,9 +21,9 @@ export class HistoryComponent implements OnInit {
     this.dataSourceName = this.route.snapshot.params.name;
     this.title = this.dataSourceName + '-history';
     if (this.dataSourceName === 'pressure') {
-      this.measurementSorce = this.weatherService.getPressureHistoryList();
+      this.measurementSource = this.weatherService.getPressureHistoryList();
     } else {
-      this.measurementSorce = this.weatherService.getTemperatureHistoryList();
+      this.measurementSource = this.weatherService.getTemperatureHistoryList();
     }
   }
 

@@ -8,6 +8,7 @@ import {Subject} from "rxjs";
 })
 export class TimeComponent implements OnInit {
 
+  // TODO find better name :)
   dateTimeObject: Date;
 
   private readonly dateChangedSubject = new Subject<Date>();

@@ -4,6 +4,8 @@ import { RouterModule, Routes} from '@angular/router';
 import { MainviewComponent} from './components/mainview/mainview.component';
 import {HistoryComponent} from './components/history/history.component';
 
+
+// TODO default route ?
 const routes: Routes = [
   { path: 'main', component: MainviewComponent },
   { path: 'history/:name', component: HistoryComponent},

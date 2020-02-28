@@ -12,6 +12,7 @@ export class TemperatureComponent implements OnInit {
 
   currentTemperature: number;
   averageTemperature: number;
+  // TODO doppelte Datenhaltung
   measuredTemperatures: number[] = [];
   private readonly  measureInterval = 7000;
   private readonly averageTemperatureSubject = new Subject<number[]>();
@@ -38,7 +39,7 @@ export class TemperatureComponent implements OnInit {
     this.averageTemperature = 0;
     this.currentTemperature = this.weatherService.getTemperature();
 
-    setInterval(() => this.measureTemperature(), this.measureInterval);
+    const interval = setInterval(() => this.measureTemperature(), this.measureInterval);
 
     this.averageTemperatureSubject.asObservable().subscribe((array) => this.updateAverageTemperature(array));
 

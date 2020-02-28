@@ -1,6 +1,29 @@
 <h3>{{title}}</h3>
-<ul>
+
+<div class="scroll-box">
+  <table>
+    <thead>
+      <tr>
+        <th>Datum</th>
+        <th>Uhrzeit</th>
+        <th>Messwert</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let measurement of measurementSource">
+        <td>{{measurement.timeStamp  | date:'dd.MM.yyyy'}}</td>
+        <td>{{measurement.timeStamp | date: 'HH:mm:ss'}}</td>
+        <td>{{measurement.measuredValue}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<!--
+ <ul>
   <li *ngFor="let measurement of measurementSorce">
     Timestamp: {{measurement.timeStamp}}, Value: {{measurement.measuredValue}}
   </li>
 </ul>
+ -->

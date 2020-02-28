@@ -1,1 +1,9 @@
-
+.scroll-box {
+  background: lightgray;
+  color: darkblue;
+  height: 150px;
+  overflow: auto;
+  width: 400px;
+  border: 1px solid silver;
+  padding: 10px;
+}
