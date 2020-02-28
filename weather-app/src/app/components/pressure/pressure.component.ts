@@ -14,33 +14,42 @@ export class PressureComponent implements OnInit {
   pressureTrendSymbol: string;
   pressureTrendText: string;
 
-  private readonly measureInterval: number = 5000;
   private readonly trendInterval: number = 30000;
 
-  private readonly pressureChangeSubject = new Subject<number>();
   private readonly pressureTrendSubject = new Subject<Measurement[]>();
 
   constructor(private weatherService: WeatherService) {
   }
 
+  ngOnInit(): void {
+    // set initial pressure-value
+    this.currentPressure = 0;
+
+    this.weatherService.pressureChanges.asObservable().subscribe(value => this.currentPressure = value);
+
+    this.weatherService.pressureHistoryChanges.asObservable().subscribe( measurements =>
+      this.updatePressureTrend(measurements));
+  }
+
   public measurePressure(): void {
-    this.pressureChangeSubject.next(this.weatherService.getPressure());
+    this.currentPressure = this.weatherService.readNewPressure();
   }
 
   private updatePressureTrend(valuesArray: Measurement[]): void {
     const deltaPressure = this.differentBetweenLastPressureValues(valuesArray);
     const pitchPressure = this.calculatePressureChangeOfInterval(valuesArray);
-    // TODO no console.logs
-    console.log(deltaPressure + ' at ' + valuesArray[valuesArray.length - 1].timeStamp);
-    console.log('pressurePitch: ' + Number.parseFloat(pitchPressure.toString()).toPrecision(4));
-    if ((Math.abs(deltaPressure) >= 4) && (Math.abs(pitchPressure) >= 10)) {
-      if (pitchPressure > 0) {
-        this.setTrendValuesInView('↑', 'rising');
-      } else {
-        this.setTrendValuesInView('↓', 'falling');
-      }
-    } else {
+    if (Math.abs(deltaPressure) < 4) {
       this.setTrendValuesInView('→', 'stable');
+      return;
+    }
+    if (Math.abs(pitchPressure) < 10) {
+      this.setTrendValuesInView('→', 'stable');
+      return;
+    }
+    if (pitchPressure > 0) {
+      this.setTrendValuesInView('↑', 'rising');
+    } else {
+      this.setTrendValuesInView('↓', 'falling');
     }
   }
 
@@ -72,22 +81,6 @@ export class PressureComponent implements OnInit {
   private setTrendValuesInView(trendIcon: string, trendWord: string): void {
     this.pressureTrendSymbol = trendIcon;
     this.pressureTrendText = trendWord;
-  }
-
-  // TODO public
-  ngOnInit(): void {
-    // set initial pressure-value
-    this.currentPressure = this.weatherService.getPressure();
-
-    setInterval(() => this.measurePressure(), this.measureInterval);
-
-    this.pressureChangeSubject.asObservable().subscribe(value => {
-      this.currentPressure = value;
-      this.pressureTrendSubject.next(this.weatherService.getPressureHistory());
-    });
-
-    this.pressureTrendSubject.asObservable().subscribe(valuesArray =>
-      this.updatePressureTrend(valuesArray));
   }
 
 }

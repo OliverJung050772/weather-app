@@ -11,7 +11,6 @@ import {WeatherService} from '../../services/weather.service';
 export class HistoryComponent implements OnInit {
 
   dataSourceName: string;
-  // TODO: Barometric Pressure History, Temperature History
   title: string;
   measurementSource: Measurement[] = [];
 
@@ -19,11 +18,12 @@ export class HistoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataSourceName = this.route.snapshot.params.name;
-    this.title = this.dataSourceName + '-history';
     if (this.dataSourceName === 'pressure') {
       this.measurementSource = this.weatherService.getPressureHistory();
+      this.title = 'barometic ' + this.dataSourceName + ' history';
     } else {
       this.measurementSource = this.weatherService.getTemperatureHistory();
+      this.title = this.dataSourceName + ' history';
     }
   }
 
