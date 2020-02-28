@@ -21,28 +21,25 @@ export class WeatherService {
   }
 
   public getTemperature(): number {
-    return this.getRandomValueBetween(this.temperatureSpan.minTemperature, this.temperatureSpan.maxTemperature);
+    const newTemperature = this.getRandomValueBetween(this.temperatureSpan.minTemperature, this.temperatureSpan.maxTemperature);
+    this.temperatureHistoryList.push(new Measurement(new Date().getTime(), newTemperature));
+    return newTemperature;
   }
 
   public getPressure(): number {
-    return this.getRandomValueBetween(this.pressureSpan.minPressure, this.pressureSpan.maxPressure);
+    const newPressure = this.getRandomValueBetween(this.pressureSpan.minPressure, this.pressureSpan.maxPressure);
+    this.pressureHistoryList.push(new Measurement(new Date().getTime(), newPressure));
+    return newPressure;
   }
 
-  public getPressureHistoryList(): Measurement[] {
+  public getPressureHistory(): Measurement[] {
     return this.pressureHistoryList;
   }
 
-  public getTemperatureHistoryList(): Measurement[] {
+  public getTemperatureHistory(): Measurement[] {
     return this.temperatureHistoryList;
   }
 
-  public addToPressureHistoryList(measurement: Measurement) {
-    this.pressureHistoryList.push(measurement);
-  }
-
-  public addToTemperatureHistoryList(measurement: Measurement) {
-    this.temperatureHistoryList.push(measurement);
-  }
 
   private getRandomValueBetween(minVal: number, maxVal: number): number {
     return Math.round((maxVal - minVal) * Math.random() + minVal);

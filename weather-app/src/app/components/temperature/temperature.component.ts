@@ -13,9 +13,8 @@ export class TemperatureComponent implements OnInit {
   currentTemperature: number;
   averageTemperature: number;
   // TODO doppelte Datenhaltung
-  measuredTemperatures: number[] = [];
   private readonly  measureInterval = 7000;
-  private readonly averageTemperatureSubject = new Subject<number[]>();
+  private readonly averageTemperatureSubject = new Subject<Measurement[]>();
   private readonly actualTemperatureSubject = new Subject<number>();
 
   constructor(private weatherService: WeatherService) {
@@ -23,13 +22,13 @@ export class TemperatureComponent implements OnInit {
 
   public measureTemperature(): void {
     const newTemperature = this.weatherService.getTemperature();
-    this.measuredTemperatures.push(newTemperature);
-    this.averageTemperatureSubject.next(this.measuredTemperatures);
+    this.averageTemperatureSubject.next(this.weatherService.getTemperatureHistory());
     this.actualTemperatureSubject.next(newTemperature);
   }
 
-  private updateAverageTemperature(temperatureArray: number[]): void {
-    const arraySum = temperatureArray.reduce((a, b) => a + b, 0);
+  private updateAverageTemperature(temperatureArray: Measurement[]): void {
+    let arraySum = 0;
+    temperatureArray.forEach(measurement => arraySum += measurement.measuredValue);
     const arrayLength = temperatureArray.length;
     this.averageTemperature = Math.round(arraySum / arrayLength);
   }
@@ -45,7 +44,6 @@ export class TemperatureComponent implements OnInit {
 
     this.actualTemperatureSubject.asObservable().subscribe(value => {
       this.currentTemperature = value;
-      this.weatherService.addToTemperatureHistoryList(new Measurement(new Date().getTime(), value));
     });
   }
 

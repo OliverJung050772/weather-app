@@ -13,13 +13,11 @@ export class PressureComponent implements OnInit {
   currentPressure: number;
   pressureTrendSymbol: string;
   pressureTrendText: string;
-  // TODO dreifache Datenhaltung?
-  measurements: Measurement[] = [];
 
   private readonly measureInterval: number = 5000;
   private readonly trendInterval: number = 30000;
+
   private readonly pressureChangeSubject = new Subject<number>();
-  // TODO doppelte Datenhaltung?
   private readonly pressureTrendSubject = new Subject<Measurement[]>();
 
   constructor(private weatherService: WeatherService) {
@@ -29,8 +27,7 @@ export class PressureComponent implements OnInit {
     this.pressureChangeSubject.next(this.weatherService.getPressure());
   }
 
-  // TODO Trending?
-  private updatePressureTrending(valuesArray: Measurement[]): void {
+  private updatePressureTrend(valuesArray: Measurement[]): void {
     const deltaPressure = this.differentBetweenLastPressureValues(valuesArray);
     const pitchPressure = this.calculatePressureChangeOfInterval(valuesArray);
     // TODO no console.logs
@@ -81,20 +78,16 @@ export class PressureComponent implements OnInit {
   ngOnInit(): void {
     // set initial pressure-value
     this.currentPressure = this.weatherService.getPressure();
-    this.measurements.push(new Measurement(new Date().getTime(), this.currentPressure));
 
     setInterval(() => this.measurePressure(), this.measureInterval);
 
     this.pressureChangeSubject.asObservable().subscribe(value => {
       this.currentPressure = value;
-      const newMeasurement = new Measurement(new Date().getTime(), value);
-      this.measurements.push(newMeasurement);
-      this.weatherService.addToPressureHistoryList(newMeasurement);
-      this.pressureTrendSubject.next(this.measurements);
+      this.pressureTrendSubject.next(this.weatherService.getPressureHistory());
     });
 
     this.pressureTrendSubject.asObservable().subscribe(valuesArray =>
-      this.updatePressureTrending(valuesArray));
+      this.updatePressureTrend(valuesArray));
   }
 
 }

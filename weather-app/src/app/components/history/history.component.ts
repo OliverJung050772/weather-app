@@ -21,9 +21,9 @@ export class HistoryComponent implements OnInit {
     this.dataSourceName = this.route.snapshot.params.name;
     this.title = this.dataSourceName + '-history';
     if (this.dataSourceName === 'pressure') {
-      this.measurementSource = this.weatherService.getPressureHistoryList();
+      this.measurementSource = this.weatherService.getPressureHistory();
     } else {
-      this.measurementSource = this.weatherService.getTemperatureHistoryList();
+      this.measurementSource = this.weatherService.getTemperatureHistory();
     }
   }
 
