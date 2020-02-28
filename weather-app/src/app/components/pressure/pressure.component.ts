@@ -22,7 +22,7 @@ export class PressureComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // set initial pressure-value
+    // TODO set currentPressure with last value from history
     this.currentPressure = 0;
 
     this.weatherService.pressureChanges.asObservable().subscribe(value => this.currentPressure = value);
