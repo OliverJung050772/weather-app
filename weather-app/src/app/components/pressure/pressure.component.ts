@@ -22,8 +22,8 @@ export class PressureComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // TODO set currentPressure with last value from history
     this.currentPressure = this.weatherService.getLastPressure();
+    this.updatePressureTrend(this.weatherService.getPressureHistory());
 
     this.weatherService.pressureChanges.asObservable().subscribe(value => this.currentPressure = value);
 
@@ -38,6 +38,10 @@ export class PressureComponent implements OnInit {
   private updatePressureTrend(valuesArray: Measurement[]): void {
     const deltaPressure = this.differentBetweenLastPressureValues(valuesArray);
     const pitchPressure = this.calculatePressureChangeOfInterval(valuesArray);
+    if (valuesArray.length < 1) {
+      this.setTrendValuesInView('⊗', 'none');
+      return;
+    }
     if (Math.abs(deltaPressure) < 4) {
       this.setTrendValuesInView('→', 'stable');
       return;

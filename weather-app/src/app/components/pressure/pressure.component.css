@@ -7,3 +7,8 @@
 #arrow-box {
   margin-top: -10px;
 }
+
+a {
+  width:inherit;
+  height: inherit;
+}

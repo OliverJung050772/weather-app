@@ -10,9 +10,6 @@ import { Subject } from "rxjs";
 
 export class WeatherService {
 
-    temperatureSpan: TemperatureSpan;
-    pressureSpan: PressureSpan;
-
     public temperatureChanges = new Subject<number>();
     public pressureChanges = new Subject<number>();
     public temperatureHistoryChanges = new Subject<Measurement[]>();
@@ -20,6 +17,8 @@ export class WeatherService {
 
     private readonly measureTemperatureInterval = 7000;
     private readonly measurePressureInterval = 5000;
+    private readonly temperatureSpan: TemperatureSpan;
+    private readonly pressureSpan: PressureSpan;
 
     private pressureHistory: Measurement[] = [];
     private temperatureHistory: Measurement[] = [];

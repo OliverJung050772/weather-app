@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {WeatherService} from '../../services/weather.service';
-import {Subject} from 'rxjs';
-import {Measurement} from "../../models/measurement";
+import { Component, OnInit } from '@angular/core';
+import { WeatherService } from '../../services/weather.service';
+import { Subject } from 'rxjs';
+import { Measurement } from "../../models/measurement";
 
 @Component({
   selector: 'app-temperature',
@@ -17,9 +17,8 @@ export class TemperatureComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // TODO get last values from weather-service-history
-    this.averageTemperature = 0;
     this.currentTemperature = this.weatherService.getLastTemperature();
+    this.updateAverageTemperature(this.weatherService.getTemperatureHistory());
 
     this.weatherService.temperatureChanges.asObservable().subscribe(value => this.currentTemperature = value);
 
@@ -32,10 +31,14 @@ export class TemperatureComponent implements OnInit {
   }
 
   private updateAverageTemperature(temperatureArray: Measurement[]): void {
-    let arraySum = 0;
-    temperatureArray.forEach(measurement => arraySum += measurement.measuredValue);
-    const arrayLength = temperatureArray.length;
-    this.averageTemperature = Math.round(arraySum / arrayLength);
+    if (temperatureArray.length > 0) {
+      let arraySum = 0;
+      temperatureArray.forEach(measurement => arraySum += measurement.measuredValue);
+      const arrayLength = temperatureArray.length;
+      this.averageTemperature = Math.round(arraySum / arrayLength);
+    } else {
+      this.averageTemperature = 0;
+    }
   }
 
 }
