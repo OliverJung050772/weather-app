@@ -19,7 +19,7 @@ export class TemperatureComponent implements OnInit {
   ngOnInit(): void {
     // TODO get last values from weather-service-history
     this.averageTemperature = 0;
-    this.currentTemperature = 0;
+    this.currentTemperature = this.weatherService.getLastTemperature();
 
     this.weatherService.temperatureChanges.asObservable().subscribe(value => this.currentTemperature = value);
 
