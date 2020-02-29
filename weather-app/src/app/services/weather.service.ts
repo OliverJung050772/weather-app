@@ -40,13 +40,13 @@ export class WeatherService {
 
     public getLastTemperature(): number {
         const lastValue = (this.temperatureHistory.length > 0) ?
-            this.temperatureHistory[this.temperatureHistory.length - 1].measuredValue : 0
+            this.temperatureHistory[0].measuredValue : 0
         return lastValue;
     }
 
     public getLastPressure(): number {
         const lastValue = (this.pressureHistory.length > 0) ?
-            this.pressureHistory[this.pressureHistory.length -1].measuredValue : 0
+            this.pressureHistory[0].measuredValue : 0
         return lastValue;
     }
 

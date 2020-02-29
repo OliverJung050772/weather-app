@@ -7,6 +7,7 @@ import {HistoryComponent} from './components/history/history.component';
 
 // TODO default route ?
 const routes: Routes = [
+  { path: '', component: MainviewComponent},
   { path: 'main', component: MainviewComponent },
   { path: 'history/:name', component: HistoryComponent},
 ];
