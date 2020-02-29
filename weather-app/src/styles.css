@@ -105,6 +105,18 @@ div.row {
   width: 25.00%;
 }
 
+.column.col4 {
+  width: 33.33%;
+}
+
+.column.col5 {
+  width: 41.66%;
+}
+
+.column.col6 {
+  width: 50.00%;
+}
+
 /* for clearing the float */
 .clearfix::after {
   content: "";
