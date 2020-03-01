@@ -2,7 +2,7 @@
   background: lightgray;
   color: darkblue;
   font-size: 16px;
-  height: 250px;
+  height: 200px;
   overflow: auto;
   width: 100%;
   border: 3px solid darkgrey;
@@ -13,23 +13,27 @@
 
 .container {
   margin-top: 5%;
+  width: 60%;
 }
 
 #back-button {
   text-align: center;
 }
 
+#header {
+  margin-bottom: 3px;
+}
+
 div.button {
   width: 75%;
   text-align: center;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 25%;
 }
 
 .value {
   text-align: right;
   color: darkblue;
-  padding-right: 10.5%;
+  padding-right: 7%;
 }
 
 table, thead, tbody {
@@ -41,7 +45,21 @@ th {
   background-color: gray;
   box-shadow: 2px 2px 2px black;
   border-radius: 3px;
+  margin: 2px;
   color: white;
+}
+
+.cell
+{
+  width: 33.33%;
+  float: left;
+}
+
+p {
+  width: 100%;
+  text-align: center;
+  padding: 2px;
+  margin-left: 6px;
 }
 
 td {

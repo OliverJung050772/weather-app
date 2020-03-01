@@ -83,11 +83,11 @@ div.container {
   font-size: 18px;
 }
 
-div.column {
+.column {
   float: left;
 }
 
-div.row {
+.row {
   width: 100%;
   display: inline-flex;
   margin-bottom: 20px;

@@ -1,31 +1,38 @@
 <h3>{{title}}</h3>
 
 <div class="container">
+  <div class="row" id="header">
+    <div class="column col3"></div>
+    <div class="column col6">
+      <div class="cell"><p>Date</p></div>
+      <div class="cell"><p>Time</p></div>
+      <div class="cell"><p>Value</p></div>
+    </div>
+    <div class="column col3"></div>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<div class="container" style="margin-top: 0;">
   <div class="row">
     <div class="column col3"></div>
     <div class="column col6">
       <div class="scroll-box">
-        <table>
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Time</th>
-              <th>Value</th>
-            </tr>
-          </thead>
+        <table>      
           <tbody>
             <tr *ngFor="let measurement of measurementSource">
               <td>{{measurement.timeStamp  | date: 'dd.MM.yyyy'}}</td>
               <td>{{measurement.timeStamp | date: 'HH:mm:ss'}}</td>
-              <td class="value">{{measurement.measuredValue}} {{unitMeasurement}}</td>
+              <td class="value">
+                {{measurement.measuredValue}} {{unitMeasurement}}
+              </td>
             </tr>
           </tbody>
         </table>
       </div>
-      </div>
+    </div>
     <div class="column col3"></div>
   </div>
-  <br class="clearfix"/><br/>
+  <br class="clearfix"/>
   <div class="row">
     <div class="column col5"></div>
     <div class="column col2" id="back-button">
@@ -34,3 +41,13 @@
     <div class="column col5"></div>
   </div>
 </div>
+
+<!--
+<thead>
+<tr>
+  <th>Date</th>
+  <th>Time</th>
+  <th>Value</th>
+</tr>
+</thead>
+-->
