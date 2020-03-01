@@ -17,7 +17,7 @@
             <tr *ngFor="let measurement of measurementSource">
               <td>{{measurement.timeStamp  | date: 'dd.MM.yyyy'}}</td>
               <td>{{measurement.timeStamp | date: 'HH:mm:ss'}}</td>
-              <td>{{measurement.measuredValue}}</td>
+              <td class="value">{{measurement.measuredValue}} {{unitMeasurement}}</td>
             </tr>
           </tbody>
         </table>

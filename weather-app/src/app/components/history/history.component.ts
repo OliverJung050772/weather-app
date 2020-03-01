@@ -11,6 +11,7 @@ import {WeatherService} from '../../services/weather.service';
 export class HistoryComponent implements OnInit {
 
   dataSourceName: string;
+  unitMeasurement: string;
   title: string;
   measurementSource: Measurement[] = [];
 
@@ -21,12 +22,14 @@ export class HistoryComponent implements OnInit {
     if (this.dataSourceName === 'pressure') {
       this.measurementSource = this.weatherService.getPressureHistory();
       this.title = 'barometic ' + this.dataSourceName + ' history';
+      this.unitMeasurement = ' mBar';
       this.measurementSource = [];
       this.weatherService.pressureHistoryChanges.asObservable().subscribe(measurements =>
         this.measurementSource = this.sortMeasurementsDesc(measurements));
     } else {
       this.measurementSource = this.weatherService.getTemperatureHistory();
       this.title = this.dataSourceName + ' history';
+      this.unitMeasurement = ' °C';
       this.measurementSource = [];
       this.weatherService.temperatureHistoryChanges.asObservable().subscribe(measurements =>
         this.measurementSource = this.sortMeasurementsDesc(measurements));

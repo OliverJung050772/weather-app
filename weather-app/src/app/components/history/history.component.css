@@ -26,13 +26,20 @@ div.button {
   margin-right: auto;
 }
 
+.value {
+  text-align: right;
+  color: darkblue;
+  padding-right: 10.5%;
+}
+
 table, thead, tbody {
   width: 100%;
 }
 
 th {
-  border: 2px solid black;
+  border: 2px solid silver;
   background-color: gray;
+  box-shadow: 2px 2px 2px black;
   border-radius: 3px;
   color: white;
 }
