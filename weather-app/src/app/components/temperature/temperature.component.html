@@ -1,18 +1,18 @@
 <div class="container">
     <div class="row">
-        <div class="column col2"></div>
+        <div class="column col2 empty"></div>
         <div class="column col3"><p>Temperature:</p></div>
         <div class="column col2"><input type="text" value="{{currentTemperature}}" disabled/></div>
-        <div class="column col1"><span>°C</span></div>
-        <div class="column col2"><button (click)="measureTemperature()">measure</button></div>
-        <div class="column col2"><div class="button"><a [routerLink]="['/history', 'temperature']">history</a></div></div>
+        <div class="column col1 unit"><span>°C</span></div>
+        <div class="column col2 btn"><button (click)="measureTemperature()">measure</button></div>
+        <div class="column col2 btn"><div class="button"><a [routerLink]="['/history', 'temperature']">history</a></div></div>
     </div>
     <br class="clearfix"/>
     <div class="row">
-        <div class="column col2"></div>
+        <div class="column col2 empty"></div>
         <div class="column col3"><p>Average Temperature:</p></div>
         <div class="column col2"><input type="text" value="{{averageTemperature}}" disabled></div>
-        <div class="column col1"><span>°C</span></div>
+        <div class="column col1 unit"><span>°C</span></div>
     </div>
     <br class="clearfix"/>
 </div>

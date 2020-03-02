@@ -123,3 +123,26 @@ div.container {
   clear: both;
   display: table;
 }
+
+/* responsive */
+@media (max-width: 930px) {
+  div.container {
+    width: 85%;
+  }
+}
+
+@media (max-width: 700px) {
+  div.container {
+    width: 90%;
+  }
+  div.empty {
+    display: none;
+  }
+}
+
+@media (max-width: 650px) {
+  div.container {
+    width: 100%;
+  }
+}
+

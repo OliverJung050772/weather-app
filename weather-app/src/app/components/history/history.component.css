@@ -68,3 +68,60 @@ td {
   color: rgb(45, 43, 44);
   font-size: 14px;
 }
+
+/* responsive */
+@media (max-width: 930px) {
+  .container {
+    width: 85%;
+  }
+}
+
+@media (max-width: 660px) {
+  .container {
+    width: 90%;
+  }
+  .column.col3 {
+    width: 0;
+  }
+  .column.col6 {
+    width: 95%;
+  }
+  div.button {
+    width: 100%;
+    margin-left: 5%;
+  }
+  #back-button {
+    width: 33%;
+  }
+}
+
+@media (max-width: 350px) {
+  .container {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .value {
+    padding-right: 0;
+  }
+  .scroll-box {
+    font-size: 14px;
+  }
+  td {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 250px) {
+  .container {
+    width: 100%;
+  }
+  .body {
+    margin: 0;
+  }
+  #back-button {
+    width: 50%;
+  }
+  td {
+    font-size: 12px;
+  }
+}
