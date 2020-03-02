@@ -76,7 +76,7 @@ td {
   }
 }
 
-@media (max-width: 660px) {
+@media (max-width: 790px) {
   .container {
     width: 90%;
   }

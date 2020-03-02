@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {Measurement} from '../../models/measurement';
 import {WeatherService} from '../../services/weather.service';
+import {tap} from "rxjs/operators";
 
 @Component({
   selector: 'app-history',
@@ -21,14 +22,14 @@ export class HistoryComponent implements OnInit {
     this.dataSourceName = this.route.snapshot.params.name;
     if (this.dataSourceName === 'pressure') {
       this.measurementSource = this.weatherService.getPressureHistory();
-      this.title = 'barometic ' + this.dataSourceName + ' history';
+      this.title = 'Barometic Pressure History';
       this.unitMeasurement = ' mBar';
       this.measurementSource = [];
       this.weatherService.pressureHistoryChanges.asObservable().subscribe(measurements =>
         this.measurementSource = this.sortMeasurementsDesc(measurements));
     } else {
       this.measurementSource = this.weatherService.getTemperatureHistory();
-      this.title = this.dataSourceName + ' history';
+      this.title = 'Temperature History';
       this.unitMeasurement = ' °C';
       this.measurementSource = [];
       this.weatherService.temperatureHistoryChanges.asObservable()

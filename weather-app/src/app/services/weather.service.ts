@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { TemperatureSpan } from '../models/temperature-span';
 import { PressureSpan } from '../models/pressure-span';
 import { Measurement } from '../models/measurement';
-import { Subject } from "rxjs";
+import {BehaviorSubject, Subject} from "rxjs";
 
 @Injectable({
     providedIn: 'root'
@@ -12,8 +12,8 @@ export class WeatherService {
 
     public temperatureChanges = new Subject<number>();
     public pressureChanges = new Subject<number>();
-    public temperatureHistoryChanges = new Subject<Measurement[]>();
-    public pressureHistoryChanges = new Subject<Measurement[]>();
+    public temperatureHistoryChanges = new BehaviorSubject<Measurement[]>([]);
+    public pressureHistoryChanges = new BehaviorSubject<Measurement[]>([]);
 
     private readonly measureTemperatureInterval = 7000;
     private readonly measurePressureInterval = 5000;
