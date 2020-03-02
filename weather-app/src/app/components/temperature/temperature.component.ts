@@ -35,7 +35,7 @@ export class TemperatureComponent implements OnInit {
       let arraySum = 0;
       temperatureArray.forEach(measurement => arraySum += measurement.measuredValue);
       const arrayLength = temperatureArray.length;
-      this.averageTemperature = Math.round(arraySum / arrayLength);
+      this.averageTemperature = parseFloat((arraySum / arrayLength).toFixed(1));
     } else {
       this.averageTemperature = 0;
     }

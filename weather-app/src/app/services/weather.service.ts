@@ -50,7 +50,8 @@ export class WeatherService {
     }
 
     public readNewTemperature(): number {
-        const newTemperature = this.getRandomValueBetween(this.temperatureSpan.minTemperature, this.temperatureSpan.maxTemperature);
+        const newTemperature = parseFloat(this.getRandomValueBetween(this.temperatureSpan.minTemperature,
+          this.temperatureSpan.maxTemperature).toFixed(1));
         const newMeasurement = new Measurement(new Date().getTime(), newTemperature);
         this.temperatureHistory.push(newMeasurement);
         this.temperatureChanges.next(newTemperature);
@@ -59,7 +60,7 @@ export class WeatherService {
     }
 
     public readNewPressure(): number {
-        const newPressure = this.getRandomValueBetween(this.pressureSpan.minPressure, this.pressureSpan.maxPressure);
+        const newPressure = Math.round(this.getRandomValueBetween(this.pressureSpan.minPressure, this.pressureSpan.maxPressure));
         const newMeasurement = new Measurement(new Date().getTime(), newPressure);
         this.pressureHistory.push(newMeasurement);
         this.pressureChanges.next(newPressure);
@@ -68,7 +69,7 @@ export class WeatherService {
     }
 
     private getRandomValueBetween(minVal: number, maxVal: number): number {
-        return Math.round((maxVal - minVal) * Math.random() + minVal);
+        return ((maxVal - minVal) * Math.random() + minVal);
     }
 
     private startMeasurements(): void {

@@ -31,8 +31,8 @@ export class HistoryComponent implements OnInit {
       this.title = this.dataSourceName + ' history';
       this.unitMeasurement = ' °C';
       this.measurementSource = [];
-      this.weatherService.temperatureHistoryChanges.asObservable().subscribe(measurements =>
-        this.measurementSource = this.sortMeasurementsDesc(measurements));
+      this.weatherService.temperatureHistoryChanges.asObservable()
+        .subscribe(measurements => this.measurementSource = this.sortMeasurementsDesc(measurements));
     }
   }
 
