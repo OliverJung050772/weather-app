@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\oliver.jung\\Documents\\Repos-Git\\weather-app\\weather-app-api\\weather-app-api.csproj": {}
+    "c:\\Users\\oliver.jung\\Documents\\Repos-Git\\weather-app\\weather-app-api\\weather-app-api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\oliver.jung\\Documents\\Repos-Git\\weather-app\\weather-app-api\\weather-app-api.csproj": {
+    "c:\\Users\\oliver.jung\\Documents\\Repos-Git\\weather-app\\weather-app-api\\weather-app-api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\oliver.jung\\Documents\\Repos-Git\\weather-app\\weather-app-api\\weather-app-api.csproj",
+        "projectUniqueName": "c:\\Users\\oliver.jung\\Documents\\Repos-Git\\weather-app\\weather-app-api\\weather-app-api.csproj",
         "projectName": "weather-app-api",
-        "projectPath": "C:\\Users\\oliver.jung\\Documents\\Repos-Git\\weather-app\\weather-app-api\\weather-app-api.csproj",
+        "projectPath": "c:\\Users\\oliver.jung\\Documents\\Repos-Git\\weather-app\\weather-app-api\\weather-app-api.csproj",
         "packagesPath": "C:\\Users\\oliver.jung\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\oliver.jung\\Documents\\Repos-Git\\weather-app\\weather-app-api\\obj\\",
+        "outputPath": "c:\\Users\\oliver.jung\\Documents\\Repos-Git\\weather-app\\weather-app-api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\oliver.jung\\AppData\\Roaming\\NuGet\\NuGet.Config",
