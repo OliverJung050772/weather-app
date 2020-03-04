@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { TemperatureSpan } from '../models/temperature-span';
 import { PressureSpan } from '../models/pressure-span';
 import { Measurement } from '../models/measurement';
-import {BehaviorSubject, Subject} from "rxjs";
+import { BehaviorSubject, Subject } from 'rxjs';
+import { WeatherApiService } from './weather-api.service';
+import { Operator} from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -23,9 +25,11 @@ export class WeatherService {
     private pressureHistory: Measurement[] = [];
     private temperatureHistory: Measurement[] = [];
 
-    constructor() {
+    constructor(private weatherApiService: WeatherApiService) {
         this.temperatureSpan = new TemperatureSpan(-20, 40);
         this.pressureSpan = new PressureSpan(1080, 1150);
+        this.getTemperaturesFromDb();
+        this.getPressuresFromDb();
         this.startMeasurements();
     }
 
@@ -75,6 +79,20 @@ export class WeatherService {
     private startMeasurements(): void {
         setInterval(() => this.readNewTemperature(), this.measureTemperatureInterval);
         setInterval(() => this.readNewPressure(), this.measurePressureInterval);
+    }
+
+    //
+    // TODO: rewrite methods
+    //
+    private getTemperaturesFromDb(): void {
+      this.weatherApiService.getTemperatures()
+        .subscribe(measurements => measurements.forEach(item =>
+          this.temperatureHistory.push(new Measurement(item.timeStamp, item.measuredValue))));
+    }
+
+    private getPressuresFromDb(): void {
+      this.weatherApiService.getPressures()
+        .subscribe(measurements => measurements.forEach(item => this.pressureHistory.push(item)));
     }
 
 }

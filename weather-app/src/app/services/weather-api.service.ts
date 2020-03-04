@@ -13,4 +13,8 @@ export class WeatherApiService {
   getTemperatures(): Observable<Measurement[]> {
     return this.http.get<Measurement[]>('/api/Temperatures');
   }
+
+  getPressures(): Observable<Measurement[]> {
+    return this.http.get<Measurement[]>('api/Pressures');
+  }
 }
