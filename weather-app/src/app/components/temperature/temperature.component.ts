@@ -22,8 +22,7 @@ export class TemperatureComponent implements OnInit {
 
     this.weatherService.temperatureChanges.asObservable().subscribe(value => this.currentTemperature = value);
 
-    this.weatherService.temperatureHistoryChanges.asObservable().subscribe(measurements =>
-      this.updateAverageTemperature(measurements));
+    this.weatherService.temperatureHistoryChanges.asObservable().subscribe(measurements => this.updateAverageTemperature(measurements));
   }
 
   public measureTemperature(): void {
