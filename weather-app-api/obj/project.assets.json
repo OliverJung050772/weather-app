@@ -8586,11 +8586,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\oliver.jung\\Documents\\Repos-Git\\weather-app-api\\weather-app-api\\weather-app-api.csproj",
+      "projectUniqueName": "C:\\Users\\oliver.jung\\Documents\\Repos-Git\\weather-app\\weather-app-api\\weather-app-api.csproj",
       "projectName": "weather-app-api",
-      "projectPath": "C:\\Users\\oliver.jung\\Documents\\Repos-Git\\weather-app-api\\weather-app-api\\weather-app-api.csproj",
+      "projectPath": "C:\\Users\\oliver.jung\\Documents\\Repos-Git\\weather-app\\weather-app-api\\weather-app-api.csproj",
       "packagesPath": "C:\\Users\\oliver.jung\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\oliver.jung\\Documents\\Repos-Git\\weather-app-api\\weather-app-api\\obj\\",
+      "outputPath": "C:\\Users\\oliver.jung\\Documents\\Repos-Git\\weather-app\\weather-app-api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\oliver.jung\\AppData\\Roaming\\NuGet\\NuGet.Config",
