@@ -8,6 +8,7 @@ import { TimeComponent } from './components/time/time.component';
 import { MainviewComponent } from './components/mainview/mainview.component';
 import { HistoryComponent } from './components/history/history.component';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AppRoutingModule } from './app-routing.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

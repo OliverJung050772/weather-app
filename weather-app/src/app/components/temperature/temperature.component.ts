@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from '../../services/weather.service';
+import { WeatherApiService} from '../../services/weather-api.service';
 import { Subject } from 'rxjs';
-import { Measurement } from "../../models/measurement";
+import { Measurement } from '../../models/measurement';
 
 @Component({
   selector: 'app-temperature',
@@ -13,10 +14,15 @@ export class TemperatureComponent implements OnInit {
   currentTemperature: number;
   averageTemperature: number;
 
-  constructor(private weatherService: WeatherService) {
+  constructor(private weatherService: WeatherService, private weatherApiService: WeatherApiService) {
   }
 
   ngOnInit(): void {
+    let apiWeatherData = [];
+    this.weatherApiService.getTemperatures().subscribe(measurements => {
+      apiWeatherData = measurements;
+      console.log(measurements);
+    });
     this.currentTemperature = this.weatherService.getLastTemperature();
     this.updateAverageTemperature(this.weatherService.getTemperatureHistory());
 
