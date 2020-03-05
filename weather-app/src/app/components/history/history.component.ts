@@ -24,14 +24,12 @@ export class HistoryComponent implements OnInit {
       this.measurementSource = this.weatherService.getPressureHistory();
       this.title = 'Barometic Pressure History';
       this.unitMeasurement = ' mBar';
-      this.measurementSource = [];
       this.weatherService.pressureHistoryChanges.asObservable().subscribe(measurements =>
         this.measurementSource = this.sortMeasurementsDesc(measurements));
     } else {
       this.measurementSource = this.weatherService.getTemperatureHistory();
       this.title = 'Temperature History';
       this.unitMeasurement = ' °C';
-      this.measurementSource = [];
       this.weatherService.temperatureHistoryChanges.asObservable()
         .subscribe(measurements => this.measurementSource = this.sortMeasurementsDesc(measurements));
     }
@@ -39,6 +37,7 @@ export class HistoryComponent implements OnInit {
 
   private sortMeasurementsDesc(measurements: Measurement[]): Measurement[] {
     const sortedData = measurements.sort((a, b) => b.timeStamp - a.timeStamp);
+    console.log(sortedData);
     return sortedData;
   }
 

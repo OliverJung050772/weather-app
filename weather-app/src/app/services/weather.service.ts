@@ -28,8 +28,8 @@ export class WeatherService {
     constructor(private weatherApiService: WeatherApiService) {
         this.temperatureSpan = new TemperatureSpan(-20, 40);
         this.pressureSpan = new PressureSpan(1080, 1150);
-        this.getTemperaturesFromDb();
-        this.getPressuresFromDb();
+        this.integrateHistoricTemperaturesFromApi();
+        this.integrateHistoricPressuresFromApi();
         this.startMeasurements();
     }
 
@@ -81,18 +81,18 @@ export class WeatherService {
         setInterval(() => this.readNewPressure(), this.measurePressureInterval);
     }
 
-    //
-    // TODO: rewrite methods
-    //
-    private getTemperaturesFromDb(): void {
-      this.weatherApiService.getTemperatures()
-        .subscribe(measurements => measurements.forEach(item =>
-          this.temperatureHistory.push(new Measurement(item.timeStamp, item.measuredValue))));
+    private integrateHistoricTemperaturesFromApi(): void {
+      this.weatherApiService.getTemperatures().subscribe(measurements => {
+        this.temperatureHistory = this.temperatureHistory.concat(measurements);
+        this.temperatureHistoryChanges.next(this.temperatureHistory);
+      });
     }
 
-    private getPressuresFromDb(): void {
-      this.weatherApiService.getPressures()
-        .subscribe(measurements => measurements.forEach(item => this.pressureHistory.push(item)));
+    private integrateHistoricPressuresFromApi(): void {
+      this.weatherApiService.getPressures().subscribe( measurements => {
+        this.pressureHistory = this.pressureHistory.concat(measurements);
+        this.pressureHistoryChanges.next(this.pressureHistory);
+      });
     }
 
 }
