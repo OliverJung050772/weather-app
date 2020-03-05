@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {Measurement} from '../../models/measurement';
 import {WeatherService} from '../../services/weather.service';
-import {tap} from "rxjs/operators";
 
 @Component({
   selector: 'app-history',

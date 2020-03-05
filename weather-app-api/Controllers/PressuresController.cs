@@ -79,10 +79,10 @@ namespace weather_app_api.Controllers
         [HttpPost]
         public async Task<ActionResult<Pressure>> PostPressure(Pressure pressure)
         {
-            _context.Pressures.Add(pressure);
+            var addedPressure =_context.Pressures.Add(pressure);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetPressure", new { id = pressure.Id }, pressure);
+            return CreatedAtAction("GetPressure", addedPressure);
         }
 
         // DELETE: api/Pressures/5

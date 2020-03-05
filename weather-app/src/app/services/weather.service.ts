@@ -17,8 +17,8 @@ export class WeatherService {
     public temperatureHistoryChanges = new BehaviorSubject<Measurement[]>([]);
     public pressureHistoryChanges = new BehaviorSubject<Measurement[]>([]);
 
-    private readonly measureTemperatureInterval = 7000;
-    private readonly measurePressureInterval = 5000;
+    private readonly measureTemperatureInterval = 60000;
+    private readonly measurePressureInterval = 40000;
     private readonly temperatureSpan: TemperatureSpan;
     private readonly pressureSpan: PressureSpan;
 
@@ -57,6 +57,8 @@ export class WeatherService {
         const newTemperature = parseFloat(this.getRandomValueBetween(this.temperatureSpan.minTemperature,
           this.temperatureSpan.maxTemperature).toFixed(1));
         const newMeasurement = new Measurement(new Date().getTime(), newTemperature);
+        this.weatherApiService.sendNewTemperatureToApi(newMeasurement)
+          .subscribe(value => console.log('Saved: [T]: ' + value));
         this.temperatureHistory.push(newMeasurement);
         this.temperatureChanges.next(newTemperature);
         this.temperatureHistoryChanges.next(this.temperatureHistory);
@@ -66,6 +68,8 @@ export class WeatherService {
     public readNewPressure(): number {
         const newPressure = Math.round(this.getRandomValueBetween(this.pressureSpan.minPressure, this.pressureSpan.maxPressure));
         const newMeasurement = new Measurement(new Date().getTime(), newPressure);
+        this.weatherApiService.sendNewPressureToApi(newMeasurement)
+          .subscribe(value => console.log('Saved [P]: ' + value));
         this.pressureHistory.push(newMeasurement);
         this.pressureChanges.next(newPressure);
         this.pressureHistoryChanges.next(this.pressureHistory);
