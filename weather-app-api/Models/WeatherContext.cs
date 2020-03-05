@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace weather_app_api.Models
 {
@@ -15,7 +11,7 @@ namespace weather_app_api.Models
         }
 
         public DbSet<Temperature> Temperatures { get; set; }
-        public DbSet<Pressure> Pressures { get; set; }
+        public DbSet<BarometicPressure> Pressures { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
             => options.UseSqlite("Data Source=weather.db");

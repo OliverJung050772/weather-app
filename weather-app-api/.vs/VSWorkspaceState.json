@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
+    "\\Controllers",
     "\\Models"
   ],
-  "SelectedNode": "\\Startup.cs",
+  "SelectedNode": "\\weather-app-api.csproj",
   "PreviewInSolutionExplorer": false
 }
