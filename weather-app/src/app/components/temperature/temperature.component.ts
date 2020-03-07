@@ -14,7 +14,7 @@ export class TemperatureComponent implements OnInit {
   currentTemperature: number;
   averageTemperature: number;
 
-  measureButtonDisplayed: boolean;
+  buttonsDisplayed: boolean = true;
 
   constructor(
     private weatherService: WeatherService,
@@ -22,17 +22,15 @@ export class TemperatureComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.settingsSidebarService.sidebarIsShown) {
-      this.measureButtonDisplayed = false;
-    } else {
-      this.measureButtonDisplayed = true;
-    }
     this.currentTemperature = this.weatherService.getLastTemperature();
     this.updateAverageTemperature(this.weatherService.getTemperatureHistory());
 
     this.weatherService.temperatureChanges.asObservable().subscribe(value => this.currentTemperature = value);
-
     this.weatherService.temperatureHistoryChanges.asObservable().subscribe(measurements => this.updateAverageTemperature(measurements));
+    this.settingsSidebarService.sidebarChanges.asObservable().subscribe(
+      isShown => this.buttonsDisplayed = isShown
+    );
+    this.setButtonsToVisible(true);
   }
 
   public measureTemperature(): void {
@@ -48,6 +46,10 @@ export class TemperatureComponent implements OnInit {
     } else {
       this.averageTemperature = 0;
     }
+  }
+
+  private setButtonsToVisible(areVisible: boolean): void {
+    this.buttonsDisplayed = areVisible;
   }
 
 }

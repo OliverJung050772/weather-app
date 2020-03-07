@@ -1,11 +1,16 @@
-<div class="container">
+<div class="container"
+  [ngStyle]="{'width': buttonsDisplayed ? '70%' : '100%'}">
   <div class="row">
     <div class="column col2 empty"></div>
     <div class="column col3"><p>Barometic pressure:</p></div>
     <div class="column col2"><input type="text" value="{{currentPressure}}" disabled/></div>
     <div class="column col1 unit"><span>mBar</span></div>
-    <div class="column col2"><button (click)="measurePressure()">measure</button></div>
-    <div class="column col2"><div class="button"><a [routerLink]="['/history', 'pressure']">history</a></div></div>
+    <div *ngIf="buttonsDisplayed" class="column col2">
+      <button (click)="measurePressure()">measure</button>
+    </div>
+    <div *ngIf="buttonsDisplayed" class="column col2">
+      <div class="button"><a [routerLink]="['/history', 'pressure']">history</a></div>
+    </div>
   </div>
   <br class="clearfix" />
   <div class="row">
@@ -16,4 +21,3 @@
   </div>
   <br class="clearfix" />
 </div>
-

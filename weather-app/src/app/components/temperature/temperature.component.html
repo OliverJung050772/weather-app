@@ -1,13 +1,14 @@
-<div class="container">
+<div class="container"
+  [ngStyle]="{'width': buttonsDisplayed ? '70%' : '100%'}">
     <div class="row">
         <div class="column col2 empty"></div>
         <div class="column col3"><p>Temperature:</p></div>
         <div class="column col2"><input type="text" value="{{currentTemperature}}" disabled/></div>
         <div class="column col1 unit"><span>°C</span></div>
-        <div *ngIf="measureButtonDisplayed" class="column col2 btn">
+        <div *ngIf="buttonsDisplayed" class="column col2 btn">
           <button (click)="measureTemperature()">measure</button>
         </div>
-        <div class="column col2 btn">
+        <div *ngIf="buttonsDisplayed" class="column col2 btn">
           <div class="button"><a [routerLink]="['/history', 'temperature']">history</a></div>
         </div>
     </div>

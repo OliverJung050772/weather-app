@@ -14,7 +14,7 @@ export class MainviewComponent implements OnInit {
 
   public toggleSidenav(): void {
     this.opened = !this.opened;
-    this.settingsSidebarService.sidebarIsShown = this.opened;
+    this.settingsSidebarService.sidebarChanges.next(!this.opened);
   }
 
   ngOnInit(): void {

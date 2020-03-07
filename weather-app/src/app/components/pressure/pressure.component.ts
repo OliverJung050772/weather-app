@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {WeatherService} from '../../services/weather.service';
 import {Measurement} from '../../models/measurement';
 import {Subject} from "rxjs";
+import { SettingsSidebarService } from '../../services/settings-sidebar.service';
 
 @Component({
   selector: 'app-pressure',
@@ -14,11 +15,15 @@ export class PressureComponent implements OnInit {
   pressureTrendSymbol: string;
   pressureTrendText: string;
 
+  buttonsDisplayed: boolean = true;
+
   private readonly trendInterval: number = 30000;
 
   private readonly pressureTrendSubject = new Subject<Measurement[]>();
 
-  constructor(private weatherService: WeatherService) {
+  constructor(
+    private weatherService: WeatherService,
+    private settingsSidebarService: SettingsSidebarService) {
   }
 
   ngOnInit(): void {
@@ -26,9 +31,12 @@ export class PressureComponent implements OnInit {
     this.updatePressureTrend(this.weatherService.getPressureHistory());
 
     this.weatherService.pressureChanges.asObservable().subscribe(value => this.currentPressure = value);
-
     this.weatherService.pressureHistoryChanges.asObservable().subscribe( measurements =>
       this.updatePressureTrend(measurements));
+    this.settingsSidebarService.sidebarChanges.asObservable().subscribe(
+      visible => this.setButtonsToVisible(visible)
+    );
+    this.setButtonsToVisible(true);
   }
 
   public measurePressure(): void {
@@ -85,6 +93,10 @@ export class PressureComponent implements OnInit {
   private setTrendValuesInView(trendIcon: string, trendWord: string): void {
     this.pressureTrendSymbol = trendIcon;
     this.pressureTrendText = trendWord;
+  }
+
+  private setButtonsToVisible(areShown: boolean): void {
+    this.buttonsDisplayed = areShown;
   }
 
 }

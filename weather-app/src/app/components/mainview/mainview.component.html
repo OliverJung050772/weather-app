@@ -1,18 +1,22 @@
 <mat-sidenav-container class="component-container">
 
   <mat-sidenav #sidenav mode="side" [(opened)]="opened">
-    <h3 class="sidebar-header">Weater-Data Settings</h3>
+    <h3 class="sidebar-header">Weather-Data Settings</h3>
   </mat-sidenav>
 
  <mat-sidenav-content>
     <h1>Weather App</h1>
     <h3>Overview</h3>
     <p class="toggle-button">
-      <button mat-button (click)="toggleSidenav()">Toggle</button>
+      <button mat-button (click)="toggleSidenav()">
+        {{opened ? '<<' : '>>'}}
+      </button>
     </p>
-    <app-time></app-time>
-    <app-temperature></app-temperature>
-    <app-pressure></app-pressure>
+    <div [ngStyle]="{'padding-left': opened ? '15%' : '0'}">
+      <app-time></app-time>
+      <app-temperature></app-temperature>
+      <app-pressure></app-pressure>
+    </div>
  </mat-sidenav-content>
 
 </mat-sidenav-container>
