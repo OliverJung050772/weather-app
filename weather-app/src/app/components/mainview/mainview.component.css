@@ -1,3 +1,10 @@
+mat-sidenav {
+  background-color: darkblue;
+  border-right: 3px outset buttonface;
+  box-shadow: 3px 3px 3px black;
+  font-family: Consolas, Arial, sans-serif;
+}
+
 .component-container {
   position: absolute;
   top: 0;

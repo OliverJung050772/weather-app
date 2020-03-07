@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SettingsSidebarService } from '../../services/settings-sidebar.service';
 
 @Component({
   selector: 'app-mainview',
@@ -9,10 +10,11 @@ export class MainviewComponent implements OnInit {
 
   public opened: boolean = false;
 
-  constructor() { }
+  constructor(private settingsSidebarService: SettingsSidebarService) { }
 
   public toggleSidenav(): void {
     this.opened = !this.opened;
+    this.settingsSidebarService.sidebarIsShown = this.opened;
   }
 
   ngOnInit(): void {

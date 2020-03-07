@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { WeatherService } from '../../services/weather.service';
 import { Subject } from 'rxjs';
 import { Measurement } from '../../models/measurement';
+import { SettingsSidebarService } from '../../services/settings-sidebar.service';
 
 @Component({
   selector: 'app-temperature',
@@ -13,10 +14,19 @@ export class TemperatureComponent implements OnInit {
   currentTemperature: number;
   averageTemperature: number;
 
-  constructor(private weatherService: WeatherService) {
+  measureButtonDisplayed: boolean;
+
+  constructor(
+    private weatherService: WeatherService,
+    private settingsSidebarService: SettingsSidebarService) {
   }
 
   ngOnInit(): void {
+    if (this.settingsSidebarService.sidebarIsShown) {
+      this.measureButtonDisplayed = false;
+    } else {
+      this.measureButtonDisplayed = true;
+    }
     this.currentTemperature = this.weatherService.getLastTemperature();
     this.updateAverageTemperature(this.weatherService.getTemperatureHistory());
 
