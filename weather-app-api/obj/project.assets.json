@@ -8581,20 +8581,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\oliver.jung\\.nuget\\packages\\": {}
+    "C:\\Users\\Oliver\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\oliver.jung\\Documents\\Repos-Git\\weather-app\\weather-app-api\\weather-app-api.csproj",
+      "projectUniqueName": "C:\\Users\\Oliver\\Documents\\Git-Repos\\weather-app\\weather-app-api\\weather-app-api.csproj",
       "projectName": "weather-app-api",
-      "projectPath": "C:\\Users\\oliver.jung\\Documents\\Repos-Git\\weather-app\\weather-app-api\\weather-app-api.csproj",
-      "packagesPath": "C:\\Users\\oliver.jung\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\oliver.jung\\Documents\\Repos-Git\\weather-app\\weather-app-api\\obj\\",
+      "projectPath": "C:\\Users\\Oliver\\Documents\\Git-Repos\\weather-app\\weather-app-api\\weather-app-api.csproj",
+      "packagesPath": "C:\\Users\\Oliver\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Oliver\\Documents\\Git-Repos\\weather-app\\weather-app-api\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
-        "C:\\Users\\oliver.jung\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Oliver\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -8658,7 +8663,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.102\\RuntimeIdentifierGraph.json"
       }
     }
   }

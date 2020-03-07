@@ -1,4 +1,18 @@
-<h3>Overview</h3>
-<app-time></app-time>
-<app-temperature></app-temperature>
-<app-pressure></app-pressure>
+<mat-sidenav-container class="component-container">
+
+  <mat-sidenav #sidenav mode="side" [(opened)]="opened">
+    <p class="sidebar-header">Weater-Data Settings</p>
+  </mat-sidenav>
+
+ <mat-sidenav-content>
+    <h1>Weather App</h1>
+    <h3>Overview</h3>
+    <p class="toggle-button">
+      <button mat-button (click)="toggleSidenav()">Toggle</button>
+    </p>
+    <app-time></app-time>
+    <app-temperature></app-temperature>
+    <app-pressure></app-pressure>
+ </mat-sidenav-content>
+
+</mat-sidenav-container>

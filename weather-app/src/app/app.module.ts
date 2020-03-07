@@ -9,6 +9,8 @@ import { MainviewComponent } from './components/mainview/mainview.component';
 import { HistoryComponent } from './components/history/history.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule} from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,15 @@ import { HttpClientModule} from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatSidenavModule,
+    BrowserAnimationsModule,
+  ],
+  exports: [
+    MatSidenavModule,
+    BrowserAnimationsModule,
+    BrowserModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

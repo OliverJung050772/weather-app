@@ -7,7 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainviewComponent implements OnInit {
 
+  public opened: boolean = false;
+
   constructor() { }
+
+  public toggleSidenav(): void {
+    this.opened = !this.opened;
+  }
 
   ngOnInit(): void {
   }
