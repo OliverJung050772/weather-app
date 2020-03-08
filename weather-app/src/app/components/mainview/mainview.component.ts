@@ -9,6 +9,8 @@ import { SettingsSidebarService } from '../../services/settings-sidebar.service'
 export class MainviewComponent implements OnInit {
 
   public opened: boolean = false;
+  public selectedTemperatureUnit: string;
+  public temperatureUnits: string[] = [' °C', ' °F'];
 
   constructor(private settingsSidebarService: SettingsSidebarService) { }
 

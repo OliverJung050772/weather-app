@@ -1,9 +1,23 @@
 <mat-sidenav-container class="component-container">
 
+  <!-- sidebar -->
   <mat-sidenav #sidenav mode="side" [(opened)]="opened">
     <h3 class="sidebar-header">Weather-Data Settings</h3>
+    <div class="sidebar-selection">
+      <label id="temperature-radio-group-label">Select Temperature Unit</label>
+      <mat-radio-group
+        aria-labelledby="temperature-radio-group-label"
+        class="sidebar-radio-group"
+        [(ngModel)]="selectedTemperatureUnit">
+          <mat-radio-button class="sidebar-radio-button"
+            *ngFor="let temperatureUnit of temperatureUnits" [value]="temperatureUnit">
+            <p>{{temperatureUnit}}</p>
+          </mat-radio-button>
+      </mat-radio-group>
+    </div>
   </mat-sidenav>
 
+  <!-- page content -->
  <mat-sidenav-content>
     <h1>Weather App</h1>
     <h3>Overview</h3>
