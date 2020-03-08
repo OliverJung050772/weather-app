@@ -8,10 +8,28 @@
       <mat-radio-group
         aria-labelledby="temperature-radio-group-label"
         class="sidebar-radio-group"
+        (change)="onTemperatureUnitChanged()"
         [(ngModel)]="selectedTemperatureUnit">
-          <mat-radio-button class="sidebar-radio-button"
-            *ngFor="let temperatureUnit of temperatureUnits" [value]="temperatureUnit">
-            <p>{{temperatureUnit}}</p>
+          <mat-radio-button class="sidebar-radio-button" value="celsius">
+            <p> °C</p>
+          </mat-radio-button>
+          <mat-radio-button class="sidebar-radio-button" value="fahrenh" >
+            <p> °F</p>
+          </mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="sidebar-selection">
+      <label id="pressure-radio-group-label">Barometic Pressure Unit</label>
+      <mat-radio-group
+        aria-labelledby="pressure-radio-group-label"
+        class="sidebar-radio-group"
+        (change)="onPressureUnitChanged()"
+        [(ngModel)]="selectedPressureUnit">
+          <mat-radio-button class="sidebar-radio-button" value="mbar">
+            <p> mBar</p>
+          </mat-radio-button>
+          <mat-radio-button class="sidebar-radio-button" value="inch" >
+            <p> *inch</p>
           </mat-radio-button>
       </mat-radio-group>
     </div>
@@ -34,3 +52,8 @@
  </mat-sidenav-content>
 
 </mat-sidenav-container>
+
+<!--
+*ngFor="let temperatureUnit of temperatureUnits" [value]="temperatureUnit">
+<p>{{temperatureUnit}}</p>
+-->

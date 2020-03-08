@@ -22,6 +22,10 @@ button {
     font-weight: bolder;
 }
 
+label.mat-radio-label > div.mat-radio-container > div.mat-radio-outer-cirkle {
+  border-color: white;
+}
+
 .component-container {
   position: absolute;
   top: 0;
