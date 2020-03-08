@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatRadioModule } from '@angular/material/radio';
 import { FormsModule } from '@angular/forms';
+import { ToFahrenheitPipe } from './pipes/toFahrenheit.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FormsModule } from '@angular/forms';
     PressureComponent,
     TimeComponent,
     MainviewComponent,
-    HistoryComponent
+    HistoryComponent,
+    ToFahrenheitPipe
   ],
   imports: [
     BrowserModule,

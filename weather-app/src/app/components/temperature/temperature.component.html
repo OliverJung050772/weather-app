@@ -3,10 +3,18 @@
     <div class="row">
         <div class="column col2 empty"></div>
         <div class="column col3"><p>Temperature:</p></div>
-        <div class="column col2">
+        <div *ngIf="temperatureUnitKey === 'celsius'" class="column col2">
           <input type="text" value="{{currentTemperature}}" disabled/>
         </div>
-        <div class="column col1 unit"><span>{{temperatureUnitDisplayed}}</span></div>
+        <div *ngIf="temperatureUnitKey === 'fahrenh'" class="column col2">
+          <input type="text" value="{{ currentTemperature | toFahrenheit }}" disabled/>
+        </div>
+        <div *ngIf="temperatureUnitKey === 'celsius'" class="column col1 unit">
+          <span> °C</span>
+        </div>
+        <div *ngIf="temperatureUnitKey === 'fahrenh'" class="column col1 unit">
+          <span> °F</span>
+        </div>
         <div *ngIf="buttonsDisplayed" class="column col2 btn">
           <button (click)="measureTemperature()">measure</button>
         </div>
@@ -19,9 +27,17 @@
         <div class="column col2 empty"></div>
         <div class="column col3"><p>Average Temperature:</p></div>
         <div class="column col2">
-          <input type="text" value="{{averageTemperature}}" disabled>
+            <input *ngIf="temperatureUnitKey === 'celsius'" type="text"
+              value="{{averageTemperature}}" disabled>
+            <input *ngIf="temperatureUnitKey === 'fahrenh'" type="text"
+              value="{{averageTemperature | toFahrenheit }}" disabled>
         </div>
-        <div class="column col1 unit"><span>{{temperatureUnitDisplayed}}</span></div>
+        <div *ngIf="temperatureUnitKey === 'celsius'" class="column col1 unit">
+          <span> °C</span>
+        </div>
+        <div *ngIf="temperatureUnitKey === 'fahrenh'" class="column col1 unit">
+          <span> °F</span>
+        </div>
     </div>
     <br class="clearfix"/>
 </div>

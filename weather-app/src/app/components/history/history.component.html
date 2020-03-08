@@ -19,12 +19,24 @@
     <div class="column col6">
       <div class="scroll-box">
         <table>
-          <tbody>
+          <tbody *ngIf="dataSourceName === 'temperature'">
+            <tr *ngFor="let measurement of measurementSource">
+              <td>{{measurement.timeStamp  | date: 'dd.MM.yyyy'}}</td>
+              <td>{{measurement.timeStamp | date: 'HH:mm:ss'}}</td>
+              <td *ngIf="unitTemperatureKey === 'celsius'" class="value">
+                {{measurement.measuredValue}} °C
+              </td>
+              <td *ngIf="unitTemperatureKey === 'fahrenh'" class="value">
+                {{measurement.measuredValue | toFahrenheit}} °F
+              </td>
+            </tr>
+          </tbody>
+          <tbody *ngIf="dataSourceName === 'pressure'">
             <tr *ngFor="let measurement of measurementSource">
               <td>{{measurement.timeStamp  | date: 'dd.MM.yyyy'}}</td>
               <td>{{measurement.timeStamp | date: 'HH:mm:ss'}}</td>
               <td class="value">
-                {{measurement.measuredValue}} {{unitMeasurement}}
+                {{measurement.measuredValue}} mBar
               </td>
             </tr>
           </tbody>
