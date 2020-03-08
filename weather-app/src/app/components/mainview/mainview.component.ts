@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { SettingsSidebarService } from '../../services/settings-sidebar.service';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { from } from 'rxjs';
 
 @Component({
   selector: 'app-mainview',
@@ -22,11 +20,11 @@ export class MainviewComponent implements OnInit {
   }
 
   public onTemperatureUnitChanged(): void {
-    console.log(this.selectedTemperatureUnit);
+    this.settingsSidebarService.radioTemperatureUnitChanges.next(this.selectedTemperatureUnit);
   }
 
   public onPressureUnitChanged(): void {
-    console.log(this.selectedPressureUnit);
+    this.settingsSidebarService.radioPressureUnitChanges.next(this.selectedPressureUnit);
   }
 
   ngOnInit(): void {

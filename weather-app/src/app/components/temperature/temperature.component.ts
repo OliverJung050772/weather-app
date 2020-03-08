@@ -13,6 +13,8 @@ export class TemperatureComponent implements OnInit {
 
   currentTemperature: number;
   averageTemperature: number;
+  temperatureUnitKey: string = 'celsius';
+  temperatureUnitDisplayed: string = ' °C';
 
   buttonsDisplayed: boolean = true;
 
@@ -30,7 +32,10 @@ export class TemperatureComponent implements OnInit {
     this.settingsSidebarService.sidebarChanges.asObservable().subscribe(
       isShown => this.buttonsDisplayed = isShown
     );
+    this.settingsSidebarService.radioTemperatureUnitChanges.asObservable()
+      .subscribe(unit => this.setDisplayedTemperatureUnit(unit));
     this.setButtonsToVisible(true);
+    this.setDisplayedTemperatureUnit(this.settingsSidebarService.selectedRadioTemperatureUnit);
   }
 
   public measureTemperature(): void {
@@ -50,6 +55,16 @@ export class TemperatureComponent implements OnInit {
 
   private setButtonsToVisible(areVisible: boolean): void {
     this.buttonsDisplayed = areVisible;
+  }
+
+  private setDisplayedTemperatureUnit(temperatureUnit: string): void {
+    const unitKey = this.settingsSidebarService.selectedRadioTemperatureUnit;
+    if (unitKey === 'celsius') {
+      this.temperatureUnitDisplayed = ' °C';
+    }
+    if (unitKey === 'fahrenh') {
+      this.temperatureUnitDisplayed = ' °F';
+    }
   }
 
 }
