@@ -13,6 +13,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatRadioModule } from '@angular/material/radio';
 import { FormsModule } from '@angular/forms';
 import { ToFahrenheitPipe } from './pipes/toFahrenheit.pipe';
+import { ToInHgPipe } from './pipes/toInHg.pipe';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ToFahrenheitPipe } from './pipes/toFahrenheit.pipe';
     TimeComponent,
     MainviewComponent,
     HistoryComponent,
-    ToFahrenheitPipe
+    ToFahrenheitPipe,
+    ToInHgPipe
   ],
   imports: [
     BrowserModule,
