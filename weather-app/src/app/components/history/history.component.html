@@ -35,8 +35,11 @@
             <tr *ngFor="let measurement of measurementSource">
               <td>{{measurement.timeStamp  | date: 'dd.MM.yyyy'}}</td>
               <td>{{measurement.timeStamp | date: 'HH:mm:ss'}}</td>
-              <td class="value">
+              <td *ngIf="unitPressureKey === 'mbar'" class="value">
                 {{measurement.measuredValue}} mBar
+              </td>
+              <td *ngIf="unitPressureKey === 'inhg'" class="value">
+                {{measurement.measuredValue | toInHg}} inHg
               </td>
             </tr>
           </tbody>
