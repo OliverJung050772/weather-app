@@ -13,9 +13,9 @@ export class TemperatureComponent implements OnInit {
 
   currentTemperature: number;
   averageTemperature: number;
-  temperatureUnitKey: string = 'celsius';
+  temperatureUnitKey: string;
 
-  buttonsDisplayed: boolean = true;
+  buttonsDisplayed = true;
 
   constructor(
     private weatherService: WeatherService,
@@ -36,8 +36,6 @@ export class TemperatureComponent implements OnInit {
 
     this.settingsSidebarService.radioTemperatureUnitChanges.asObservable()
       .subscribe(unit => this.temperatureUnitKey = unit);
-    this.settingsSidebarService.radioTemperatureUnitChanges.next('fahrenh');
-    this.settingsSidebarService.radioTemperatureUnitChanges.next('celsius');
     this.temperatureUnitKey = this.settingsSidebarService.selectedRadioTemperatureUnit;
   }
 

@@ -8,9 +8,13 @@ import { SettingsSidebarService } from '../../services/settings-sidebar.service'
 })
 export class MainviewComponent implements OnInit {
 
-  public opened: boolean = false;
-  public selectedTemperatureUnit: string = 'celsius';
-  public selectedPressureUnit: string = 'mbar';
+  public opened = false;
+  public selectedTemperatureUnit: string;
+  public selectedPressureUnit: string;
+  public isCelsius: boolean;
+  public isFahrenheit: boolean;
+  public isMBar: boolean;
+  public isInHg: boolean;
 
   constructor(private settingsSidebarService: SettingsSidebarService) { }
 
@@ -28,7 +32,22 @@ export class MainviewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.selectedTemperatureUnit = this.settingsSidebarService.selectedRadioTemperatureUnit;
+    this.selectedPressureUnit = this.settingsSidebarService.selectedRadioPressureUnit;
+    if (this.selectedTemperatureUnit === 'celsius') {
+      this.isCelsius = true;
+      this.isFahrenheit = false;
+    } else {
+      this.isCelsius = false;
+      this.isFahrenheit = true;
+    }
+    if (this.selectedPressureUnit === 'mbar') {
+      this.isMBar = true;
+      this.isInHg = false;
+    } else {
+      this.isMBar = false;
+      this.isInHg = true;
+    }
   }
 
 }

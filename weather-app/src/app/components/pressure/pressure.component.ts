@@ -14,7 +14,7 @@ export class PressureComponent implements OnInit {
   currentPressure: number;
   pressureTrendSymbol: string;
   pressureTrendText: string;
-  pressureUnitKey: string = 'mbar';
+  pressureUnitKey: string;
 
   buttonsDisplayed: boolean = true;
 
@@ -42,9 +42,6 @@ export class PressureComponent implements OnInit {
     this.settingsSidebarService.radioPressureUnitChanges.asObservable().subscribe(
       unit => this.pressureUnitKey = unit
     );
-    // make sure, the correct value is set
-    this.settingsSidebarService.radioPressureUnitChanges.next('inhg');
-    this.settingsSidebarService.radioPressureUnitChanges.next('mbar')
     this.pressureUnitKey = this.settingsSidebarService.selectedRadioPressureUnit;
   }
 
