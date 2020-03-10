@@ -18,8 +18,8 @@ export class HistoryComponent implements OnInit {
   measurementSource: Measurement[] = [];
 
   constructor(private route: ActivatedRoute,
-    private weatherService: WeatherService,
-    private settingsSidebarService: SettingsSidebarService) { }
+              private weatherService: WeatherService,
+              private settingsSidebarService: SettingsSidebarService) { }
 
   ngOnInit(): void {
     this.dataSourceName = this.route.snapshot.params.name;

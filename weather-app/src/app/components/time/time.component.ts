@@ -10,7 +10,7 @@ import { SettingsSidebarService } from '../../services/settings-sidebar.service'
 export class TimeComponent implements OnInit {
 
   // TODO find better name :)
-  dateTimeObject: Date;
+  dateTime: Date;
   sidebarDisplayed: boolean = false;
 
   private readonly dateChangedSubject = new Subject<Date>();
@@ -20,10 +20,10 @@ export class TimeComponent implements OnInit {
 
   ngOnInit(): void {
     // set initial Date & time
-    this.dateTimeObject = new Date();
+    this.dateTime = new Date();
     setInterval(() => this.dateChangedSubject.next(new Date()), 1000);
 
-    this.dateChangedSubject.asObservable().subscribe(dateObj => this.dateTimeObject = dateObj);
+    this.dateChangedSubject.asObservable().subscribe(dateObj => this.dateTime = dateObj);
     this.settingsSidebarService.sidebarChanges.asObservable().subscribe(
       isVisible => this.sidebarDisplayed = isVisible
     );
