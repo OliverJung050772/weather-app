@@ -3,7 +3,5 @@ Req. 9: „Ewige Historie“ für Luftdruck und Temperatur  1. Die Historie alle
 Req. 10: Implementation of the sidebar
 
  // TODO Show sidebar in history-view
- // TODO make sidebar-toggle-button to rectangle
  // TODO fix background jumping
  // TODO measure-/ history buttons should be shown always
- // TODO Change z-index of sidebar
