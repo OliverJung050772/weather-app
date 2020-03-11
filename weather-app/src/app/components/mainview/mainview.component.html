@@ -1,57 +1,60 @@
 <mat-sidenav-container class="component-container">
 
   <!-- sidebar -->
-  <mat-sidenav #sidenav mode="side" [(opened)]="opened">
-    <h3 class="sidebar-header">Weather-Data Settings</h3>
-    <div class="sidebar-selection">
-      <label id="temperature-radio-group-label">Select Temperature Unit</label>
-      <mat-radio-group
-        aria-labelledby="temperature-radio-group-label"
-        class="sidebar-radio-group"
-        (change)="onTemperatureUnitChanged()"
-        [(ngModel)]="selectedTemperatureUnit">
-        <mat-radio-button
-          [checked]="isCelsius"
-          class="sidebar-radio-button" value="celsius">
-          <p> °C</p>
-        </mat-radio-button>
-        <mat-radio-button
-          [checked]="isFahrenheit"
-          class="sidebar-radio-button" value="fahrenh">
-          <p> °F</p>
-        </mat-radio-button>
-      </mat-radio-group>
-    </div>
-    <div class="sidebar-selection">
-      <label id="pressure-radio-group-label">Barometic Pressure Unit</label>
-      <mat-radio-group
-        aria-labelledby="pressure-radio-group-label"
-        class="sidebar-radio-group"
-        (change)="onPressureUnitChanged()"
-        [(ngModel)]="selectedPressureUnit">
-        <mat-radio-button
-          [checked]="isMBar"
-          class="sidebar-radio-button" value="mbar">
-          <p> mBar</p>
-        </mat-radio-button>
-        <mat-radio-button
-          [checked]="isInHg"
-          class="sidebar-radio-button" value="inhg">
-          <p> inHg</p>
-        </mat-radio-button>
-      </mat-radio-group>
-    </div>
+  <mat-sidenav #sidenav mode="mode.value" [(opened)]="opened">
+      <h1 class="sidebar-header">Settings</h1>
+      <h3>Units for Measurements</h3>
+      <div class="sidebar-selection">
+        <label id="temperature-radio-group-label">Select Temperature Unit</label>
+        <mat-radio-group
+          aria-labelledby="temperature-radio-group-label"
+          class="sidebar-radio-group"
+          (change)="onTemperatureUnitChanged()"
+          [(ngModel)]="selectedTemperatureUnit">
+          <mat-radio-button
+            [checked]="isCelsius"
+            class="sidebar-radio-button" value="celsius">
+            <p> °C</p>
+          </mat-radio-button>
+          <mat-radio-button
+            [checked]="isFahrenheit"
+            class="sidebar-radio-button" value="fahrenh">
+            <p> °F</p>
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div class="sidebar-selection">
+        <label id="pressure-radio-group-label">Barometic Pressure Unit</label>
+        <mat-radio-group
+          aria-labelledby="pressure-radio-group-label"
+          class="sidebar-radio-group"
+          (change)="onPressureUnitChanged()"
+          [(ngModel)]="selectedPressureUnit">
+          <mat-radio-button
+            [checked]="isMBar"
+            class="sidebar-radio-button" value="mbar">
+            <p> mBar</p>
+          </mat-radio-button>
+          <mat-radio-button
+            [checked]="isInHg"
+            class="sidebar-radio-button" value="inhg">
+            <p> inHg</p>
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
   </mat-sidenav>
 
   <!-- page content -->
   <mat-sidenav-content>
     <h1>Weather App</h1>
     <h3>Overview</h3>
-    <p class="toggle-button">
-      <button mat-button (click)="toggleSidenav()">
-        {{opened ? '<<' : '>>'}}
-      </button>
-    </p>
+    <div style="width: 100%;">
+      <p class="toggle-button">
+        <button mat-button (click)="toggleSidenav()">
+          {{opened ? '<<' : '>>'}}
+        </button>
+      </p>
+    </div>
     <div [ngStyle]="{'padding-left': opened ? '15%' : '0'}">
       <app-time></app-time>
       <app-temperature></app-temperature>

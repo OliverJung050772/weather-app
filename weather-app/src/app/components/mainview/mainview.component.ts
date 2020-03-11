@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SettingsSidebarService } from '../../services/settings-sidebar.service';
+import { FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-mainview',
@@ -9,6 +10,7 @@ import { SettingsSidebarService } from '../../services/settings-sidebar.service'
 export class MainviewComponent implements OnInit {
 
   public opened = false;
+  public mode = new FormControl('over');
   public selectedTemperatureUnit: string;
   public selectedPressureUnit: string;
   public isCelsius: boolean;
