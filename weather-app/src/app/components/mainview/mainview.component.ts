@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SettingsSidebarService } from '../../services/settings-sidebar.service';
+import { ActivatedRoute } from '@angular/router';
 import { FormControl} from '@angular/forms';
 
 @Component({
@@ -8,6 +9,7 @@ import { FormControl} from '@angular/forms';
   styleUrls: ['./mainview.component.css']
 })
 export class MainviewComponent implements OnInit {
+  [x: string]: any;
 
   public opened = false;
   public mode = new FormControl('over');
@@ -17,8 +19,11 @@ export class MainviewComponent implements OnInit {
   public isFahrenheit: boolean;
   public isMBar: boolean;
   public isInHg: boolean;
+  public pathParamName: string;
 
-  constructor(private settingsSidebarService: SettingsSidebarService) { }
+  constructor(
+    private settingsSidebarService: SettingsSidebarService,
+    private route: ActivatedRoute) { }
 
   public toggleSidenav(): void {
     this.opened = !this.opened;
@@ -34,6 +39,7 @@ export class MainviewComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.pathParamName = this.route.snapshot.params.name;
     this.selectedTemperatureUnit = this.settingsSidebarService.selectedRadioTemperatureUnit;
     this.selectedPressureUnit = this.settingsSidebarService.selectedRadioPressureUnit;
     if (this.selectedTemperatureUnit === 'celsius') {

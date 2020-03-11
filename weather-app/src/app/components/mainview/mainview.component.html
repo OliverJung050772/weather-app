@@ -45,7 +45,8 @@
   </mat-sidenav>
 
   <!-- page content -->
-  <mat-sidenav-content>
+  <mat-sidenav-content
+    *ngIf="pathParamName !== 'temperature' && pathParamName !== 'pressure'">
     <div style="width: 100%;">
       <p class="toggle-button">
         <button mat-button
@@ -61,6 +62,23 @@
       <app-time></app-time>
       <app-temperature></app-temperature>
       <app-pressure></app-pressure>
+    </div>
+  </mat-sidenav-content>
+
+  <mat-sidenav-content
+    *ngIf="pathParamName === 'temperature' || pathParamName === 'pressure'">
+    <div style="width: 100%;">
+      <p class="toggle-button">
+        <button mat-button
+          [ngStyle]="{'width': opened ? '90px' : '45px'}"
+          (click)="toggleSidenav()">
+          {{opened ? '<<<' : '>>'}}
+        </button>
+      </p>
+    </div>
+    <h1>Weather App</h1>
+    <div>
+      <app-history></app-history>
     </div>
   </mat-sidenav-content>
 
