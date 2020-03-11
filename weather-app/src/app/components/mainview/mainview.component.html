@@ -46,16 +46,18 @@
 
   <!-- page content -->
   <mat-sidenav-content>
-    <h1>Weather App</h1>
-    <h3>Overview</h3>
     <div style="width: 100%;">
       <p class="toggle-button">
-        <button mat-button (click)="toggleSidenav()">
-          {{opened ? '<<' : '>>'}}
+        <button mat-button
+          [ngStyle]="{'width': opened ? '90px' : '45px'}"
+          (click)="toggleSidenav()">
+          {{opened ? '<<<' : '>>'}}
         </button>
       </p>
     </div>
-    <div [ngStyle]="{'padding-left': opened ? '15%' : '0'}">
+    <h1>Weather App</h1>
+    <h3>Overview</h3>
+    <div>
       <app-time></app-time>
       <app-temperature></app-temperature>
       <app-pressure></app-pressure>

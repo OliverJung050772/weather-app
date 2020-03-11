@@ -72,7 +72,7 @@ p {
 p.toggle-button {
   padding-left: 2px;
   z-index: 110;
-  float: right;
+  margin-left: 259px;
 }
 
 span {

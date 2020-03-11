@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from '../../services/weather.service';
-import { Subject } from 'rxjs';
 import { Measurement } from '../../models/measurement';
 import { SettingsSidebarService } from '../../services/settings-sidebar.service';
 
@@ -15,8 +14,6 @@ export class TemperatureComponent implements OnInit {
   averageTemperature: number;
   temperatureUnitKey: string;
 
-  buttonsDisplayed = true;
-
   constructor(
     private weatherService: WeatherService,
     private settingsSidebarService: SettingsSidebarService) {
@@ -28,11 +25,6 @@ export class TemperatureComponent implements OnInit {
 
     this.weatherService.temperatureChanges.asObservable().subscribe(value => this.currentTemperature = value);
     this.weatherService.temperatureHistoryChanges.asObservable().subscribe(measurements => this.updateAverageTemperature(measurements));
-
-    this.settingsSidebarService.sidebarChanges.asObservable().subscribe(
-      isShown => this.buttonsDisplayed = isShown
-    );
-    this.setButtonsToVisible(true);
 
     this.settingsSidebarService.radioTemperatureUnitChanges.asObservable()
       .subscribe(unit => this.temperatureUnitKey = unit);
@@ -52,10 +44,6 @@ export class TemperatureComponent implements OnInit {
     } else {
       this.averageTemperature = 0;
     }
-  }
-
-  private setButtonsToVisible(areVisible: boolean): void {
-    this.buttonsDisplayed = areVisible;
   }
 
 }
