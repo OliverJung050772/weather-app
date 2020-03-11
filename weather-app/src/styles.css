@@ -70,9 +70,14 @@ p {
 }
 
 p.toggle-button {
-  padding-left: 2px;
-  z-index: 110;
   margin-left: 259px;
+  margin-top: -4px;
+  padding-left: 0;
+  z-index: 110;
+<<<<<<< HEAD
+  margin-left: 259px;
+=======
+>>>>>>> a669c1808bc6f9eb41e0ee66d95b55729dada4d3
 }
 
 span {

@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {Subject} from "rxjs";
-import { SettingsSidebarService } from '../../services/settings-sidebar.service';
 
 @Component({
   selector: 'app-time',
@@ -9,12 +8,11 @@ import { SettingsSidebarService } from '../../services/settings-sidebar.service'
 })
 export class TimeComponent implements OnInit {
 
-  // TODO find better name :)
   dateTime: Date;
 
   private readonly dateChangedSubject = new Subject<Date>();
 
-  constructor(private settingsSidebarService: SettingsSidebarService) {
+  constructor() {
   }
 
   ngOnInit(): void {
