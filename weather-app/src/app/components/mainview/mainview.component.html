@@ -1,85 +1,10 @@
-<mat-sidenav-container class="component-container">
+<h1>Weather App</h1>
+<h3>Overview</h3>
+<div>
+  <app-time></app-time>
+  <app-temperature></app-temperature>
+  <app-pressure></app-pressure>
+</div>
 
-  <!-- sidebar -->
-  <mat-sidenav #sidenav mode="mode.value" [(opened)]="opened">
-      <h1 class="sidebar-header">Settings</h1>
-      <h3>Units for Measurements</h3>
-      <div class="sidebar-selection">
-        <label id="temperature-radio-group-label">Select Temperature Unit</label>
-        <mat-radio-group
-          aria-labelledby="temperature-radio-group-label"
-          class="sidebar-radio-group"
-          (change)="onTemperatureUnitChanged()"
-          [(ngModel)]="selectedTemperatureUnit">
-          <mat-radio-button
-            [checked]="isCelsius"
-            class="sidebar-radio-button" value="celsius">
-            <p> °C</p>
-          </mat-radio-button>
-          <mat-radio-button
-            [checked]="isFahrenheit"
-            class="sidebar-radio-button" value="fahrenh">
-            <p> °F</p>
-          </mat-radio-button>
-        </mat-radio-group>
-      </div>
-      <div class="sidebar-selection">
-        <label id="pressure-radio-group-label">Barometic Pressure Unit</label>
-        <mat-radio-group
-          aria-labelledby="pressure-radio-group-label"
-          class="sidebar-radio-group"
-          (change)="onPressureUnitChanged()"
-          [(ngModel)]="selectedPressureUnit">
-          <mat-radio-button
-            [checked]="isMBar"
-            class="sidebar-radio-button" value="mbar">
-            <p> mBar</p>
-          </mat-radio-button>
-          <mat-radio-button
-            [checked]="isInHg"
-            class="sidebar-radio-button" value="inhg">
-            <p> inHg</p>
-          </mat-radio-button>
-        </mat-radio-group>
-      </div>
-  </mat-sidenav>
 
-  <!-- page content -->
-  <mat-sidenav-content
-    *ngIf="pathParamName !== 'temperature' && pathParamName !== 'pressure'">
-    <div style="width: 100%;">
-      <p class="toggle-button">
-        <button mat-button
-          [ngStyle]="{'width': opened ? '90px' : '45px'}"
-          (click)="toggleSidenav()">
-          {{opened ? '<<<' : '>>'}}
-        </button>
-      </p>
-    </div>
-    <h1>Weather App</h1>
-    <h3>Overview</h3>
-    <div>
-      <app-time></app-time>
-      <app-temperature></app-temperature>
-      <app-pressure></app-pressure>
-    </div>
-  </mat-sidenav-content>
 
-  <mat-sidenav-content
-    *ngIf="pathParamName === 'temperature' || pathParamName === 'pressure'">
-    <div style="width: 100%;">
-      <p class="toggle-button">
-        <button mat-button
-          [ngStyle]="{'width': opened ? '90px' : '45px'}"
-          (click)="toggleSidenav()">
-          {{opened ? '<<<' : '>>'}}
-        </button>
-      </p>
-    </div>
-    <h1>Weather App</h1>
-    <div>
-      <app-history></app-history>
-    </div>
-  </mat-sidenav-content>
-
-</mat-sidenav-container>
