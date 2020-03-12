@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Measurement } from '../../models/measurement';
 import { WeatherService } from '../../services/weather.service';
-import { SettingsSidebarService } from '../../services/settings-sidebar.service';
+import { SettingsService } from '../../services/settings.service';
 
 @Component({
   selector: 'app-history',
@@ -19,7 +19,7 @@ export class HistoryComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private weatherService: WeatherService,
-              private settingsSidebarService: SettingsSidebarService) { }
+              private settingsService: SettingsService) { }
 
   ngOnInit(): void {
     this.dataSourceName = this.route.snapshot.params.name;
@@ -28,18 +28,18 @@ export class HistoryComponent implements OnInit {
       this.title = 'Barometic Pressure History';
       this.weatherService.pressureHistoryChanges.asObservable().subscribe(measurements =>
         this.measurementSource = this.sortMeasurementsDesc(measurements));
-      this.settingsSidebarService.radioPressureUnitChanges.asObservable()
+      this.settingsService.radioPressureUnitChanges.asObservable()
         .subscribe(unit => this.unitPressureKey = unit);
     } else {
       this.measurementSource = this.weatherService.getTemperatureHistory();
       this.title = 'Temperature History';
       this.weatherService.temperatureHistoryChanges.asObservable()
         .subscribe(measurements => this.measurementSource = this.sortMeasurementsDesc(measurements));
-      this.settingsSidebarService.radioTemperatureUnitChanges.asObservable()
+      this.settingsService.radioTemperatureUnitChanges.asObservable()
         .subscribe(unit => this.unitTemperatureKey = unit);
     }
-    this.unitTemperatureKey = this.settingsSidebarService.selectedRadioTemperatureUnit;
-    this.unitPressureKey = this.settingsSidebarService.selectedRadioPressureUnit;
+    this.unitTemperatureKey = this.settingsService.selectedRadioTemperatureUnit;
+    this.unitPressureKey = this.settingsService.selectedRadioPressureUnit;
   }
 
   private sortMeasurementsDesc(measurements: Measurement[]): Measurement[] {

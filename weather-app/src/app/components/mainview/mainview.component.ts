@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SettingsSidebarService } from '../../services/settings-sidebar.service';
+import { SettingsService } from '../../services/settings.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormControl} from '@angular/forms';
 
@@ -22,26 +22,26 @@ export class MainviewComponent implements OnInit {
   public pathParamName: string;
 
   constructor(
-    private settingsSidebarService: SettingsSidebarService,
+    private settingsService: SettingsService,
     private route: ActivatedRoute) { }
 
   public toggleSidenav(): void {
     this.opened = !this.opened;
-    this.settingsSidebarService.getsidebarChanges.next(!this.opened);
+    this.settingsService.getsidebarChanges.next(!this.opened);
   }
 
   public onTemperatureUnitChanged(): void {
-    this.settingsSidebarService.radioTemperatureUnitChanges.next(this.selectedTemperatureUnit);
+    this.settingsService.radioTemperatureUnitChanges.next(this.selectedTemperatureUnit);
   }
 
   public onPressureUnitChanged(): void {
-    this.settingsSidebarService.radioPressureUnitChanges.next(this.selectedPressureUnit);
+    this.settingsService.radioPressureUnitChanges.next(this.selectedPressureUnit);
   }
 
   ngOnInit(): void {
     this.pathParamName = this.route.snapshot.params.name;
-    this.selectedTemperatureUnit = this.settingsSidebarService.selectedRadioTemperatureUnit;
-    this.selectedPressureUnit = this.settingsSidebarService.selectedRadioPressureUnit;
+    this.selectedTemperatureUnit = this.settingsService.selectedRadioTemperatureUnit;
+    this.selectedPressureUnit = this.settingsService.selectedRadioPressureUnit;
     if (this.selectedTemperatureUnit === 'celsius') {
       this.isCelsius = true;
     } else {

@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {WeatherService} from '../../services/weather.service';
 import {Measurement} from '../../models/measurement';
 import {Subject} from 'rxjs';
-import { SettingsSidebarService } from '../../services/settings-sidebar.service';
+import { SettingsService } from '../../services/settings.service';
 
 @Component({
   selector: 'app-pressure',
@@ -22,7 +22,7 @@ export class PressureComponent implements OnInit {
 
   constructor(
     private weatherService: WeatherService,
-    private settingsSidebarService: SettingsSidebarService) {
+    private settingsService: SettingsService) {
   }
 
   ngOnInit(): void {
@@ -33,10 +33,10 @@ export class PressureComponent implements OnInit {
     this.weatherService.pressureHistoryChanges.asObservable().subscribe( measurements =>
       this.updatePressureTrend(measurements));
 
-    this.settingsSidebarService.radioPressureUnitChanges.asObservable().subscribe(
+    this.settingsService.radioPressureUnitChanges.asObservable().subscribe(
       unit => this.pressureUnitKey = unit
     );
-    this.pressureUnitKey = this.settingsSidebarService.selectedRadioPressureUnit;
+    this.pressureUnitKey = this.settingsService.selectedRadioPressureUnit;
   }
 
   public measurePressure(): void {

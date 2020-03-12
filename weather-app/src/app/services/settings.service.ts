@@ -4,7 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class SettingsSidebarService {
+export class SettingsService {
 
   public sidebarIsShown: boolean;
   public getsidebarChanges = new BehaviorSubject<boolean>(false);
@@ -26,7 +26,7 @@ export class SettingsSidebarService {
     this.radioPressureUnitChanges.asObservable().subscribe(
       unit => {
          this.selectedRadioPressureUnit = unit;
-         this.saveSettingsLocal();;
+         this.saveSettingsLocal();
      });
   }
 
@@ -43,6 +43,7 @@ export class SettingsSidebarService {
   }
 
   /* this method seems to be necessary to display the complete pressure- & temperature- components!
+    Without it, input-fields are not displayed. Found no better way so far ...
   *  I really don't like it ... :-( */
   private pushUnitValuesForInitialLoading(): void {
     this.radioTemperatureUnitChanges.next(this.selectedRadioTemperatureUnit);

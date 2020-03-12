@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from '../../services/weather.service';
 import { Measurement } from '../../models/measurement';
-import { SettingsSidebarService } from '../../services/settings-sidebar.service';
+import { SettingsService } from '../../services/settings.service';
 
 @Component({
   selector: 'app-temperature',
@@ -16,7 +16,7 @@ export class TemperatureComponent implements OnInit {
 
   constructor(
     private weatherService: WeatherService,
-    private settingsSidebarService: SettingsSidebarService) {
+    private settingsService: SettingsService) {
   }
 
   ngOnInit(): void {
@@ -26,9 +26,9 @@ export class TemperatureComponent implements OnInit {
     this.weatherService.temperatureChanges.asObservable().subscribe(value => this.currentTemperature = value);
     this.weatherService.temperatureHistoryChanges.asObservable().subscribe(measurements => this.updateAverageTemperature(measurements));
 
-    this.settingsSidebarService.radioTemperatureUnitChanges.asObservable()
+    this.settingsService.radioTemperatureUnitChanges.asObservable()
       .subscribe(unit => this.temperatureUnitKey = unit);
-    this.temperatureUnitKey = this.settingsSidebarService.selectedRadioTemperatureUnit;
+    this.temperatureUnitKey = this.settingsService.selectedRadioTemperatureUnit;
   }
 
   public measureTemperature(): void {

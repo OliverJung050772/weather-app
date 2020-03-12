@@ -2,6 +2,4 @@ Req. 9: „Ewige Historie“ für Luftdruck und Temperatur  1. Die Historie alle
   wird beim Laden der Anwendung wieder eingelesen. Messwerte werden somit über Programm-Start/Stopp-Grenzen hinweg angezeigt
 Req. 10: Implementation of the sidebar
 
- // TODO Show sidebar in history-view
- // TODO fix background jumping
- // TODO measure-/ history buttons should be shown always
+ // TODO remove Ui-initialization method 'pushUnitValuesForInitialLoading()' in SettingsService

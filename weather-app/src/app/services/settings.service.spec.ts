@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SettingsSidebarService } from './settings-sidebar.service';
+import { SettingsService } from './settings.service';
 
 describe('SettingsSidebarService', () => {
-  let service: SettingsSidebarService;
+  let service: SettingsService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(SettingsSidebarService);
+    service = TestBed.inject(SettingsService);
   });
 
   it('should be created', () => {
