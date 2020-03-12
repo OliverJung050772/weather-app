@@ -1,18 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { WeatherService } from '../../services/weather.service';
-import { Measurement } from '../../models/measurement';
-import { SettingsService } from '../../services/settings.service';
+import {Component, OnInit} from '@angular/core';
+import {WeatherService} from '../../services/weather.service';
+import {Measurement} from '../../models/measurement';
+import {SettingsService} from '../../services/settings.service';
 
 @Component({
   selector: 'app-temperature',
   templateUrl: './temperature.component.html',
   styleUrls: ['./temperature.component.css']
 })
+
 export class TemperatureComponent implements OnInit {
 
-  currentTemperature: number;
-  averageTemperature: number;
-  temperatureUnitKey: string;
+  public currentTemperature: number;
+  public averageTemperature: number;
+  public temperatureUnitKey: string;
 
   constructor(
     private weatherService: WeatherService,

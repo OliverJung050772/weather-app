@@ -14,6 +14,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { FormsModule } from '@angular/forms';
 import { ToFahrenheitPipe } from './pipes/toFahrenheit.pipe';
 import { ToInHgPipe } from './pipes/toInHg.pipe';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { ToggleButtonComponent } from './components/toggle-button/toggle-button.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { ToInHgPipe } from './pipes/toInHg.pipe';
     MainviewComponent,
     HistoryComponent,
     ToFahrenheitPipe,
-    ToInHgPipe
+    ToInHgPipe,
+    SidebarComponent,
+    ToggleButtonComponent
   ],
   imports: [
     BrowserModule,

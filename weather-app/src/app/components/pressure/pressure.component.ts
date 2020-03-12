@@ -9,16 +9,15 @@ import { SettingsService } from '../../services/settings.service';
   templateUrl: './pressure.component.html',
   styleUrls: ['./pressure.component.css']
 })
+
 export class PressureComponent implements OnInit {
 
-  currentPressure: number;
-  pressureTrendSymbol: string;
-  pressureTrendText: string;
-  pressureUnitKey: string;
+  public currentPressure: number;
+  public pressureTrendSymbol: string;
+  public pressureTrendText: string;
+  public pressureUnitKey: string;
 
   private readonly trendInterval: number = 30000;
-
-  private readonly pressureTrendSubject = new Subject<Measurement[]>();
 
   constructor(
     private weatherService: WeatherService,
@@ -30,12 +29,11 @@ export class PressureComponent implements OnInit {
     this.updatePressureTrend(this.weatherService.getPressureHistory());
 
     this.weatherService.pressureChanges.asObservable().subscribe(value => this.currentPressure = value);
-    this.weatherService.pressureHistoryChanges.asObservable().subscribe( measurements =>
-      this.updatePressureTrend(measurements));
+    this.weatherService.pressureHistoryChanges.asObservable()
+      .subscribe( measurements => this.updatePressureTrend(measurements));
 
-    this.settingsService.radioPressureUnitChanges.asObservable().subscribe(
-      unit => this.pressureUnitKey = unit
-    );
+    this.settingsService.radioPressureUnitChanges.asObservable()
+      .subscribe(unit => this.pressureUnitKey = unit);
     this.pressureUnitKey = this.settingsService.selectedRadioPressureUnit;
   }
 
@@ -45,7 +43,7 @@ export class PressureComponent implements OnInit {
 
   private updatePressureTrend(valuesArray: Measurement[]): void {
     const deltaPressure = this.differentBetweenLastPressureValues(valuesArray);
-    const pitchPressure = this.calculatePressureChangeOfInterval(valuesArray);
+    const pressureChangeRate = this.calculatePressureChangeOfInterval(valuesArray);
     if (valuesArray.length < 1) {
       this.setTrendValuesInView('⊗', 'none');
       return;
@@ -54,11 +52,11 @@ export class PressureComponent implements OnInit {
       this.setTrendValuesInView('→', 'stable');
       return;
     }
-    if (Math.abs(pitchPressure) < 10) {
+    if (Math.abs(pressureChangeRate) < 10) {
       this.setTrendValuesInView('→', 'stable');
       return;
     }
-    if (pitchPressure > 0) {
+    if (pressureChangeRate > 0) {
       this.setTrendValuesInView('↑', 'rising');
     } else {
       this.setTrendValuesInView('↓', 'falling');

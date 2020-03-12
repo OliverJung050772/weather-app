@@ -1,17 +1,14 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {BehaviorSubject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SettingsService {
 
-  public sidebarIsShown: boolean;
-  public getsidebarChanges = new BehaviorSubject<boolean>(false);
+export class SettingsService {
 
   public selectedRadioTemperatureUnit: string;
   public selectedRadioPressureUnit: string;
-
   public radioTemperatureUnitChanges = new BehaviorSubject<string>('');
   public radioPressureUnitChanges = new BehaviorSubject<string>('');
 
@@ -20,14 +17,14 @@ export class SettingsService {
     this.pushUnitValuesForInitialLoading();
     this.radioTemperatureUnitChanges.asObservable().subscribe(
       unit => {
-         this.selectedRadioTemperatureUnit = unit;
-         this.saveSettingsLocal();
-     });
+        this.selectedRadioTemperatureUnit = unit;
+        this.saveSettingsLocal();
+      });
     this.radioPressureUnitChanges.asObservable().subscribe(
       unit => {
-         this.selectedRadioPressureUnit = unit;
-         this.saveSettingsLocal();
-     });
+        this.selectedRadioPressureUnit = unit;
+        this.saveSettingsLocal();
+      });
   }
 
   public saveSettingsLocal(): void {
@@ -42,6 +39,7 @@ export class SettingsService {
     this.selectedRadioPressureUnit = pressureUnit ? pressureUnit : 'mbar';
   }
 
+  // TODO: find a better solution ...
   /* this method seems to be necessary to display the complete pressure- & temperature- components!
     Without it, input-fields are not displayed. Found no better way so far ...
   *  I really don't like it ... :-( */

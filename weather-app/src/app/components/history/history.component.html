@@ -20,28 +20,28 @@
       <div class="scroll-box">
         <table>
           <tbody *ngIf="dataSourceName === 'temperature'">
-            <tr *ngFor="let measurement of measurementSource">
-              <td>{{measurement.timeStamp  | date: 'dd.MM.yyyy'}}</td>
-              <td>{{measurement.timeStamp | date: 'HH:mm:ss'}}</td>
-              <td *ngIf="unitTemperatureKey === 'celsius'" class="value">
-                {{measurement.measuredValue}} °C
-              </td>
-              <td *ngIf="unitTemperatureKey === 'fahrenh'" class="value">
-                {{measurement.measuredValue | toFahrenheit}} °F
-              </td>
-            </tr>
+          <tr *ngFor="let measurement of measurementSource">
+            <td>{{measurement.timeStamp  | date: 'dd.MM.yyyy'}}</td>
+            <td>{{measurement.timeStamp | date: 'HH:mm:ss'}}</td>
+            <td *ngIf="unitTemperatureKey === 'celsius'" class="value">
+              {{measurement.measuredValue}} °C
+            </td>
+            <td *ngIf="unitTemperatureKey === 'fahrenh'" class="value">
+              {{measurement.measuredValue | toFahrenheit}} °F
+            </td>
+          </tr>
           </tbody>
           <tbody *ngIf="dataSourceName === 'pressure'">
-            <tr *ngFor="let measurement of measurementSource">
-              <td>{{measurement.timeStamp  | date: 'dd.MM.yyyy'}}</td>
-              <td>{{measurement.timeStamp | date: 'HH:mm:ss'}}</td>
-              <td *ngIf="unitPressureKey === 'mbar'" class="value">
-                {{measurement.measuredValue}} mBar
-              </td>
-              <td *ngIf="unitPressureKey === 'inhg'" class="value">
-                {{measurement.measuredValue | toInHg}} inHg
-              </td>
-            </tr>
+          <tr *ngFor="let measurement of measurementSource">
+            <td>{{measurement.timeStamp  | date: 'dd.MM.yyyy'}}</td>
+            <td>{{measurement.timeStamp | date: 'HH:mm:ss'}}</td>
+            <td *ngIf="unitPressureKey === 'mbar'" class="value">
+              {{measurement.measuredValue}} mBar
+            </td>
+            <td *ngIf="unitPressureKey === 'inhg'" class="value">
+              {{measurement.measuredValue | toInHg}} inHg
+            </td>
+          </tr>
           </tbody>
         </table>
       </div>

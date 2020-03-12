@@ -1,0 +1,9 @@
+<div style="width: 100%;">
+  <p class="toggle-button">
+    <button mat-button
+            [ngStyle]="{'width': opened ? '90px' : '45px'}"
+            (click)="toggleSidenav()">
+      {{opened ? '<<<' : '>>'}}
+    </button>
+  </p>
+</div>

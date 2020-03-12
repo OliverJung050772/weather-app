@@ -1,0 +1,40 @@
+<h1 class="sidebar-header">Settings</h1>
+<h3>Units for Measurements</h3>
+<div class="sidebar-selection">
+  <label id="temperature-radio-group-label">Select Temperature Unit</label>
+  <mat-radio-group
+    aria-labelledby="temperature-radio-group-label"
+    class="sidebar-radio-group"
+    (change)="onTemperatureUnitChanged()"
+    [(ngModel)]="selectedTemperatureUnit">
+    <mat-radio-button
+      [checked]="isCelsius"
+      class="sidebar-radio-button" value="celsius">
+      <p> °C</p>
+    </mat-radio-button>
+    <mat-radio-button
+      [checked]="isFahrenheit"
+      class="sidebar-radio-button" value="fahrenh">
+      <p> °F</p>
+    </mat-radio-button>
+  </mat-radio-group>
+</div>
+<div class="sidebar-selection">
+  <label id="pressure-radio-group-label">Barometic Pressure Unit</label>
+  <mat-radio-group
+    aria-labelledby="pressure-radio-group-label"
+    class="sidebar-radio-group"
+    (change)="onPressureUnitChanged()"
+    [(ngModel)]="selectedPressureUnit">
+    <mat-radio-button
+      [checked]="isMBar"
+      class="sidebar-radio-button" value="mbar">
+      <p> mBar</p>
+    </mat-radio-button>
+    <mat-radio-button
+      [checked]="isInHg"
+      class="sidebar-radio-button" value="inhg">
+      <p> inHg</p>
+    </mat-radio-button>
+  </mat-radio-group>
+</div>

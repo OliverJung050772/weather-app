@@ -2,26 +2,32 @@ a {
   width: inherit;
   height: inherit;
 }
+
 /* responsive */
 @media (max-width: 560px) {
   div.column.col2 {
     margin-left: 5%;
     width: 10%;
   }
+
   div.column.col3, div.column.col1 {
     font-size: 14px;
   }
+
   input {
     font-size: 10px;
     width: 100%;
   }
+
   div.unit {
     text-align: right;
   }
+
   a, button {
     font-size: 10px;
     width: 55px;
   }
+
   div.column.col2.btn,
   div.button {
     width: 55px;

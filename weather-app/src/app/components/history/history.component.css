@@ -1,3 +1,36 @@
+table, thead, tbody {
+  width: 100%;
+}
+
+th {
+  border: 2px solid silver;
+  background-color: gray;
+  box-shadow: 2px 2px 2px black;
+  border-radius: 3px;
+  margin: 2px;
+  color: white;
+}
+
+td {
+  width: 33.33%;
+  text-align: center;
+  color: rgb(45, 43, 44);
+  font-size: 14px;
+}
+
+p {
+  width: 100%;
+  text-align: center;
+  padding: 2px;
+  margin-left: 6px;
+}
+
+div.button {
+  width: 75%;
+  text-align: center;
+  margin-left: 25%;
+}
+
 .scroll-box {
   background: #DEE3F9;
   color:  #1F3658;
@@ -16,57 +49,23 @@
   width: 60%;
 }
 
-#back-button {
-  text-align: center;
-}
-
-#header {
-  margin-bottom: 3px;
-}
-
-div.button {
-  width: 75%;
-  text-align: center;
-  margin-left: 25%;
-}
-
 .value {
   text-align: right;
   color: darkblue;
   padding-right: 7%;
 }
 
-table, thead, tbody {
-  width: 100%;
-}
-
-th {
-  border: 2px solid silver;
-  background-color: gray;
-  box-shadow: 2px 2px 2px black;
-  border-radius: 3px;
-  margin: 2px;
-  color: white;
-}
-
-.cell
-{
+.cell {
   width: 33.33%;
   float: left;
 }
 
-p {
-  width: 100%;
+#back-button {
   text-align: center;
-  padding: 2px;
-  margin-left: 6px;
 }
 
-td {
-  width: 33.33%;
-  text-align: center;
-  color: rgb(45, 43, 44);
-  font-size: 14px;
+#header {
+  margin-bottom: 3px;
 }
 
 /* responsive */

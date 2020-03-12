@@ -1,0 +1,36 @@
+mat-radio-group,
+label {
+  margin-left: 35px;
+}
+
+mat-radio-button {
+  padding-left: 75px;
+}
+
+label.mat-radio-label > div.mat-radio-container > div.mat-radio-outer-cirkle {
+  border-color: white;
+}
+
+.sidebar-header {
+  width: 260px;
+  text-align: center;
+  padding-left: 0;
+}
+
+.sidebar-selection {
+  margin-top: 35%;
+  color: white;
+  font-family: sans-serif;
+  font-size: 18px;
+  text-shadow: 3px 3px 3px black;
+}
+
+.sidebar-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+
+.sidebar-radio-button {
+  margin: 5px;
+}
