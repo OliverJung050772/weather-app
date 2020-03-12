@@ -11,11 +11,11 @@ import { SettingsSidebarService } from '../../services/settings-sidebar.service'
 })
 export class HistoryComponent implements OnInit {
 
-  dataSourceName: string;
-  unitPressureKey: string;
-  unitTemperatureKey: string;
-  title: string;
-  measurementSource: Measurement[] = [];
+  public dataSourceName: string;
+  public unitPressureKey: string;
+  public unitTemperatureKey: string;
+  public title: string;
+  public measurementSource: Measurement[] = [];
 
   constructor(private route: ActivatedRoute,
               private weatherService: WeatherService,
@@ -28,11 +28,15 @@ export class HistoryComponent implements OnInit {
       this.title = 'Barometic Pressure History';
       this.weatherService.pressureHistoryChanges.asObservable().subscribe(measurements =>
         this.measurementSource = this.sortMeasurementsDesc(measurements));
+      this.settingsSidebarService.radioPressureUnitChanges.asObservable()
+        .subscribe(unit => this.unitPressureKey = unit);
     } else {
       this.measurementSource = this.weatherService.getTemperatureHistory();
       this.title = 'Temperature History';
       this.weatherService.temperatureHistoryChanges.asObservable()
         .subscribe(measurements => this.measurementSource = this.sortMeasurementsDesc(measurements));
+      this.settingsSidebarService.radioTemperatureUnitChanges.asObservable()
+        .subscribe(unit => this.unitTemperatureKey = unit);
     }
     this.unitTemperatureKey = this.settingsSidebarService.selectedRadioTemperatureUnit;
     this.unitPressureKey = this.settingsSidebarService.selectedRadioPressureUnit;
@@ -40,7 +44,6 @@ export class HistoryComponent implements OnInit {
 
   private sortMeasurementsDesc(measurements: Measurement[]): Measurement[] {
     const sortedData = measurements.sort((a, b) => b.timeStamp - a.timeStamp);
-    console.log(sortedData);
     return sortedData;
   }
 

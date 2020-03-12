@@ -6,11 +6,11 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class SettingsSidebarService {
 
-  sidebarIsShown: boolean;
-  sidebarChanges = new BehaviorSubject<boolean>(false);
+  public sidebarIsShown: boolean;
+  public getsidebarChanges = new BehaviorSubject<boolean>(false);
 
-  selectedRadioTemperatureUnit: string;
-  selectedRadioPressureUnit: string;
+  public selectedRadioTemperatureUnit: string;
+  public selectedRadioPressureUnit: string;
 
   public radioTemperatureUnitChanges = new BehaviorSubject<string>('');
   public radioPressureUnitChanges = new BehaviorSubject<string>('');
@@ -22,13 +22,11 @@ export class SettingsSidebarService {
       unit => {
          this.selectedRadioTemperatureUnit = unit;
          this.saveSettingsLocal();
-         console.log(this.selectedRadioTemperatureUnit);
      });
     this.radioPressureUnitChanges.asObservable().subscribe(
       unit => {
          this.selectedRadioPressureUnit = unit;
-         this.saveSettingsLocal();
-         console.log(this.selectedRadioPressureUnit);
+         this.saveSettingsLocal();;
      });
   }
 

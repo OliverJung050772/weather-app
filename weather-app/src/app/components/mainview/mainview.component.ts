@@ -9,7 +9,7 @@ import { FormControl} from '@angular/forms';
   styleUrls: ['./mainview.component.css']
 })
 export class MainviewComponent implements OnInit {
-  [x: string]: any;
+  // [x: string]: any;
 
   public opened = false;
   public mode = new FormControl('over');
@@ -27,7 +27,7 @@ export class MainviewComponent implements OnInit {
 
   public toggleSidenav(): void {
     this.opened = !this.opened;
-    this.settingsSidebarService.sidebarChanges.next(!this.opened);
+    this.settingsSidebarService.getsidebarChanges.next(!this.opened);
   }
 
   public onTemperatureUnitChanged(): void {
@@ -44,16 +44,12 @@ export class MainviewComponent implements OnInit {
     this.selectedPressureUnit = this.settingsSidebarService.selectedRadioPressureUnit;
     if (this.selectedTemperatureUnit === 'celsius') {
       this.isCelsius = true;
-      this.isFahrenheit = false;
     } else {
-      this.isCelsius = false;
       this.isFahrenheit = true;
     }
     if (this.selectedPressureUnit === 'mbar') {
       this.isMBar = true;
-      this.isInHg = false;
     } else {
-      this.isMBar = false;
       this.isInHg = true;
     }
   }
