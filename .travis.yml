@@ -7,11 +7,12 @@ sudo: false
 
 cache:
   directories:
-     - ./node_modules
+     - ./weather-app/node_modules
+     - ./weather-app
 
 install:
   - npm install
 
 script:
-  - cd weather-app
   - npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+  - npm run e2e -- --protractor-config=e2e/protractor-ci.conf.js
