@@ -13,4 +13,5 @@ install:
   - npm install
 
 script:
+  - cd weather-app
   - npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
