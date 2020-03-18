@@ -1,6 +1,8 @@
 dist: trusty
 sudo: false
 
+os: windows
+
 language: node_js
 node_js:
   - "10"
@@ -21,4 +23,3 @@ install:
 
 script:
   - npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
-  - npm run e2e -- --protractor-config=e2e/protractor-ci.conf.js
