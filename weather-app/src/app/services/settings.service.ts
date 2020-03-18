@@ -28,8 +28,8 @@ export class SettingsService {
   }
 
   public saveSettingsLocal(): void {
-    localStorage.setItem('temperatureUnit', this.selectedRadioTemperatureUnit);
-    localStorage.setItem('pressureUnit', this.selectedRadioPressureUnit);
+      localStorage.setItem('temperatureUnit', this.selectedRadioTemperatureUnit);
+      localStorage.setItem('pressureUnit', this.selectedRadioPressureUnit);
   }
 
   public readSettingsLocal(): void {
