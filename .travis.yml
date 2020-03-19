@@ -8,7 +8,8 @@ sudo: false
 cache:
   directories:
      - ./weather-app/node_modules
-     - ./weather-app
+
+before_install: cd weather-app
 
 install:
   - npm install
