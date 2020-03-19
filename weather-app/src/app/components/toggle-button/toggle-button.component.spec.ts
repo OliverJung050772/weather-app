@@ -8,9 +8,9 @@ describe('ToggleButtonComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ToggleButtonComponent ]
+      declarations: [ToggleButtonComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +19,8 @@ describe('ToggleButtonComponent', () => {
     fixture.detectChanges();
   });
 
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
+  xit('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
 });

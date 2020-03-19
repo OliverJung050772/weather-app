@@ -19,7 +19,7 @@ describe('TimeComponent', () => {
     fixture.detectChanges();
   });
 
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
+  xit('should create', () => {
+     expect(component).toBeTruthy();
+  });
 });

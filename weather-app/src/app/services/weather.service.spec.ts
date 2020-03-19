@@ -10,9 +10,8 @@ describe('RandomService', () => {
     service = TestBed.inject(WeatherService);
   });
 
-  /*
-  it('should be created', () => {
+  xit('should be created', () => {
     expect(service).toBeTruthy();
   });
-  */
+
 });

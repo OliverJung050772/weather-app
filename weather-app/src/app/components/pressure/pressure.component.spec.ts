@@ -8,9 +8,9 @@ describe('PressureComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PressureComponent ]
+      declarations: [PressureComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +19,8 @@ describe('PressureComponent', () => {
     fixture.detectChanges();
   });
 
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
+  xit('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
 });
